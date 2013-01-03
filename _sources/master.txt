@@ -4,5 +4,6 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/01/03/new_year
    2012/12/28/first_post
 
