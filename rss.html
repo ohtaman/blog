@@ -43,16 +43,9 @@ multi は標準入力を1行毎に区切って複数のプロセスに渡すこ�
 <div class="section" id="id3">
 <h2>オプション</h2>
 <p>指定できるオプションは以下のとおり。</p>
-<div class="highlight-python"><pre>usage: multi [OPTIONS]
--c   combiner command
--h   show this message
--m   mapper command (required)
--n   number of mappers (required)
--s   splitter command
--S   use internal splitter/combiner which preserve the order of the input sequence</pre>
-</div>
 <p>複数のプロセスからの出力を最後にまとめて出力します。これを combiner と呼び、外部コマンドを利用したい場合には -c オプションを使います。</p>
-<div class="highlight-python"><pre>cat hoge.txt | multi -m &quot;sort&quot; -c &quot;sort -m {}&quot;</pre>
+<div class="highlight-bash"><div class="highlight"><pre>cat hoge.txt | multi -m <span class="s2">&quot;sort&quot;</span> -c <span class="s2">&quot;sort -m {}&quot;</span>
+</pre></div>
 </div>
 <p>とすると {} の部分が mapper(-m “sort” の部分) の標準出力のリストに置換されます。</p>
 <p>行の順序を保ちたい場合には -S オプションを利用します。この場合、 splitter や combiner は指定できません。</p>

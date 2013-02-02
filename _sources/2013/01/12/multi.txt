@@ -30,7 +30,8 @@ multi は標準入力を1行毎に区切って複数のプロセスに渡すこ�
 
 指定できるオプションは以下のとおり。
 
-::
+
+.. code-block::
 
    usage: multi [OPTIONS]
    -c	combiner command
@@ -42,7 +43,8 @@ multi は標準入力を1行毎に区切って複数のプロセスに渡すこ�
 
 
 複数のプロセスからの出力を最後にまとめて出力します。これを combiner と呼び、外部コマンドを利用したい場合には -c オプションを使います。
-::
+
+.. code-block:: bash
 
    cat hoge.txt | multi -m "sort" -c "sort -m {}"
 
