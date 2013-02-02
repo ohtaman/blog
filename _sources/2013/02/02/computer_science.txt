@@ -33,6 +33,6 @@
 まぁ、そんな感じです。
 
 .. author:: default
-.. categories:: none
-.. tags:: none
+.. categories:: computer science
+.. tags:: programming, event, career
 .. comments::

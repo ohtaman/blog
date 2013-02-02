@@ -76,5 +76,5 @@ multi は標準入力を1行毎に区切って複数のプロセスに渡すこ�
 
 .. author:: default
 .. categories:: programming
-.. tags:: none
+.. tags:: programming, command, linux
 .. comments::
