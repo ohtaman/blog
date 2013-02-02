@@ -5,6 +5,6 @@
 今後ともよろしくお願いします。
 
 .. author:: default
-.. categories:: none
+.. categories:: others
 .. tags:: none
 .. comments::

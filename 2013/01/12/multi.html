@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>新年明けましておめでとうございます。 &mdash; 子曰く、</title><meta name="description" content="">
+        <title>UNIXコマンドを並列化する &mdash; 子曰く、</title><meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
 
@@ -18,7 +18,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
-        <script src="../../../_static/main.js"></script><link rel="top" title="子曰く、" href="../../../index.html" /><link rel="next" title="引っ越してきました" href="../../../2012/12/28/first_post.html" /><link rel="prev" title="UNIXコマンドを並列化する" href="../12/multi.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <script src="../../../_static/main.js"></script><link rel="top" title="子曰く、" href="../../../index.html" /><link rel="next" title="新年明けましておめでとうございます。" href="../03/new_year.html" /><link rel="prev" title="computer_science" href="../../02/02/computer_science.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
         VERSION:     '1.0.2',
@@ -65,31 +65,70 @@
               </li>
               </ul>
           </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="../12/multi.html">UNIXコマンドを並列化する</a></li>
-            <li class="right"><a href="../../../2012/12/28/first_post.html">引っ越してきました</a> &raquo; </li>
+            <li class="left"> &laquo; <a href="../../02/02/computer_science.html">computer_science</a></li>
+            <li class="right"><a href="../03/new_year.html">新年明けましておめでとうございます。</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>2013/01/03</span>
+            <span>2013/01/12</span>
         </div>
-    <div class="section" id="id1">
-<h1>新年明けましておめでとうございます。</h1>
-<p>昨年は大変お世話になりました。今年もよろしくお願いします。</p>
-<div class="line-block">
-<div class="line">昨年は、プライベートではオーロラ鑑賞などの貴重な体験をすることができましたし、新しい仲間も増え、なかなか充実した一年でした。</div>
-<div class="line">一方仕事面は、なかなか自分の思うように事が進まず、考えも伝わらず、悩んだりイライラしたりすることが多かった気がします。いろいろ考えさせられたという意味では良かったのですが、まぁ、あまりこの感じは引きずりたくないものです。</div>
+    <div class="section" id="unix">
+<h1>UNIXコマンドを並列化する</h1>
+<p>もう一年近く前、会社の方が &#8220;UNIXのテキスト処理関連のツールをマルチスレッド対応してほしい&#8221; とつぶやいていました。</p>
+<p>「マルチスレッドは面倒くさいけど、マルチプロセスなら簡単だよ!」ってことで、プチフレームワークを書いたのが去年の5月。</p>
+<p>それを最近になって思い出して、 <a class="reference external" href="https://github.com/ohtaman/multi">github</a> にあげたので紹介します。</p>
+<div class="section" id="id1">
+<h2>何をするもの?</h2>
+<p>テキスト処理をしていると、簡単なクレンジング処理などで
+行単位で並列化出来るような処理がたくさんあります。
+multi は標準入力を1行毎に区切って複数のプロセスに渡すことでテキスト処理の高速化を図るツールです。
+テキストを分割したりプロセス管理したりするので、重い処理をしない場合は遅くなることがあります。</p>
 </div>
-<p>さて、今年の目標についていろいろ考えたのですが、結局</p>
+<div class="section" id="id2">
+<h2>サンプル</h2>
+<p>以下のコードでは行毎に hoge.txt を10個の mecab にかけています。</p>
+<div class="highlight-bash"><div class="highlight"><pre>cat hoge.txt | multi -m <span class="s2">&quot;mecab&quot;</span> -n 10
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>オプション</h2>
+<p>指定できるオプションは以下のとおり。</p>
+<div class="highlight-python"><pre>usage: multi [OPTIONS]
+-c   combiner command
+-h   show this message
+-m   mapper command (required)
+-n   number of mappers (required)
+-s   splitter command
+-S   use internal splitter/combiner which preserve the order of the input sequence</pre>
+</div>
+<p>複数のプロセスからの出力を最後にまとめて出力します。これを combiner と呼び、外部コマンドを利用したい場合には -c オプションを使います。</p>
+<div class="highlight-python"><pre>cat hoge.txt | multi -m "sort" -c "sort -m {}"</pre>
+</div>
+<p>とすると {} の部分が mapper(-m &#8220;sort&#8221; の部分) の標準出力のリストに置換されます。</p>
+<p>行の順序を保ちたい場合には -S オプションを利用します。この場合、 splitter や combiner は指定できません。</p>
+</div>
+<div class="section" id="id4">
+<h2>インストール</h2>
+<p>インストール手順は以下のとおりです。</p>
 <ol class="arabic simple">
-<li>仕事のために自分を犠牲にしない</li>
-<li>自分の市場価値を知る</li>
-<li>金銭感覚を身につける</li>
-<li>ダイエットをする</li>
+<li>github よりダウンロード</li>
 </ol>
-<div class="line-block">
-<div class="line">の四つにしました。</div>
-<div class="line">入社時から「3年間はココで働いて、その時点でココが好きなら残るし、そうじゃなければ残らない」と、色々な人に話していたのですが、この4月でついに入社3年です。その判断をするときに、自分の市場価値を把握しておきたいなぁと。</div>
-<div class="line">今の自分はそもそも転職(or自立)できるのか、できるとしたらいくらもらえるか、そして、その金額に見合うだけの価値を本当に提供できるか。「他にいけるかわからないから、今の会社に残る」とかだけは絶対にいやなんですよね。「他にもいろいろ選択肢があるけど、やっぱココだね。」っていう気持ちで残りたい。残るなら。</div>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/ohtaman/multi.git multi
+</pre></div>
 </div>
-<p>あと、体重は7kg落とします。今年の健康診断までに。</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>configure &amp; make</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>multi
+./configure
+make
+sudo make install
+</pre></div>
+</div>
+</div></blockquote>
+</div>
 </div>
 
     <div class="postmeta">
@@ -99,22 +138,22 @@
         <div class="categories">
             <span>
                 カテゴリー:
-                <a href="../../../categories/others.html">others</a></span>
+                <a href="../../../categories/programming.html">programming</a></span>
         </div>
         
         
     </div>
-    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "blog-ohtaman";    var disqus_identifier = "2013/01/03/new_year";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="../12/multi.html">UNIXコマンドを並列化する</a></li>
-            <li class="right"><a href="../../../2012/12/28/first_post.html">引っ越してきました</a> &raquo; </li>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "blog-ohtaman";    var disqus_identifier = "2013/01/12/multi";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"> &laquo; <a href="../../02/02/computer_science.html">computer_science</a></li>
+            <li class="right"><a href="../03/new_year.html">新年明けましておめでとうございます。</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>最近の投稿</h1>
     <ul><li>
             <a href="../../02/02/computer_science.html">computer_science</a>
         </li><li>
-            <a href="../12/multi.html">UNIXコマンドを並列化する</a>
+            <a href="#">UNIXコマンドを並列化する</a>
         </li><li>
-            <a href="#">新年明けましておめでとうございます。</a>
+            <a href="../03/new_year.html">新年明けましておめでとうございます。</a>
         </li><li>
             <a href="../../../2012/12/28/first_post.html">引っ越してきました</a>
         </li></ul>

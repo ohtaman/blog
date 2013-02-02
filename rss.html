@@ -5,8 +5,86 @@
         <link>http://ohtaman.github.com/blog/</link>
         <description>「もえもえきゅん♡」</description>
         <language>en-us</language>
-        <pubDate>Thu, 03 Jan 2013 00:00:00 +0900</pubDate>
+        <pubDate>Sat, 02 Feb 2013 00:00:00 +0900</pubDate>
         
+        <item>
+            <link>http://ohtaman.github.com/blog/2013/02/02/computer_science.html</link>
+            <guid>http://ohtaman.github.com/blog/2013/02/02/computer_science.html</guid>
+            <title>computer_science</title>
+            <description><![CDATA[<div class="section" id="computer-science">
+<h1>computer_science</h1>
+</div>]]></description>
+             <pubDate>Sat, 02 Feb 2013 00:00:00 +0900</pubDate>
+        </item>
+    
+        <item>
+            <link>http://ohtaman.github.com/blog/2013/01/12/multi.html</link>
+            <guid>http://ohtaman.github.com/blog/2013/01/12/multi.html</guid>
+            <title>UNIXコマンドを並列化する</title>
+            <description><![CDATA[<div class="section" id="unix">
+<h1>UNIXコマンドを並列化する</h1>
+<p>もう一年近く前、会社の方が “UNIXのテキスト処理関連のツールをマルチスレッド対応してほしい” とつぶやいていました。</p>
+<p>「マルチスレッドは面倒くさいけど、マルチプロセスなら簡単だよ!」ってことで、プチフレームワークを書いたのが去年の5月。</p>
+<p>それを最近になって思い出して、 <a class="reference external" href="https://github.com/ohtaman/multi">github</a> にあげたので紹介します。</p>
+<div class="section" id="id1">
+<h2>何をするもの?</h2>
+<p>テキスト処理をしていると、簡単なクレンジング処理などで
+行単位で並列化出来るような処理がたくさんあります。
+multi は標準入力を1行毎に区切って複数のプロセスに渡すことでテキスト処理の高速化を図るツールです。
+テキストを分割したりプロセス管理したりするので、重い処理をしない場合は遅くなることがあります。</p>
+</div>
+<div class="section" id="id2">
+<h2>サンプル</h2>
+<p>以下のコードでは行毎に hoge.txt を10個の mecab にかけています。</p>
+<div class="highlight-bash"><div class="highlight"><pre>cat hoge.txt | multi -m <span class="s2">&quot;mecab&quot;</span> -n 10
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>オプション</h2>
+<p>指定できるオプションは以下のとおり。</p>
+<div class="highlight-python"><pre>usage: multi [OPTIONS]
+-c   combiner command
+-h   show this message
+-m   mapper command (required)
+-n   number of mappers (required)
+-s   splitter command
+-S   use internal splitter/combiner which preserve the order of the input sequence</pre>
+</div>
+<p>複数のプロセスからの出力を最後にまとめて出力します。これを combiner と呼び、外部コマンドを利用したい場合には -c オプションを使います。</p>
+<div class="highlight-python"><pre>cat hoge.txt | multi -m &quot;sort&quot; -c &quot;sort -m {}&quot;</pre>
+</div>
+<p>とすると {} の部分が mapper(-m “sort” の部分) の標準出力のリストに置換されます。</p>
+<p>行の順序を保ちたい場合には -S オプションを利用します。この場合、 splitter や combiner は指定できません。</p>
+</div>
+<div class="section" id="id4">
+<h2>インストール</h2>
+<p>インストール手順は以下のとおりです。</p>
+<ol class="arabic simple">
+<li>github よりダウンロード</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/ohtaman/multi.git multi
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>configure &amp; make</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>multi
+./configure
+make
+sudo make install
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>]]></description>
+            <category><![CDATA[ programming ]]></category>
+             <pubDate>Sat, 12 Jan 2013 00:00:00 +0900</pubDate>
+        </item>
+    
         <item>
             <link>http://ohtaman.github.com/blog/2013/01/03/new_year.html</link>
             <guid>http://ohtaman.github.com/blog/2013/01/03/new_year.html</guid>
@@ -32,6 +110,7 @@
 </div>
 <p>あと、体重は7kg落とします。今年の健康診断までに。</p>
 </div>]]></description>
+            <category><![CDATA[ others ]]></category>
              <pubDate>Thu, 03 Jan 2013 00:00:00 +0900</pubDate>
         </item>
     
@@ -44,6 +123,7 @@
 <p>引っ越してきました。
 今後ともよろしくお願いします。</p>
 </div>]]></description>
+            <category><![CDATA[ others ]]></category>
              <pubDate>Fri, 28 Dec 2012 00:00:00 +0900</pubDate>
         </item>
     

@@ -1,0 +1,79 @@
+UNIXコマンドを並列化する
+========================
+
+もう一年近く前、会社の方が "UNIXのテキスト処理関連のツールをマルチスレッド対応してほしい" とつぶやいていました。
+
+「マルチスレッドは面倒くさいけど、マルチプロセスなら簡単だよ!」ってことで、プチフレームワークを書いたのが去年の5月。
+
+それを最近になって思い出して、 `github <https://github.com/ohtaman/multi>`_ にあげたので紹介します。
+
+
+何をするもの?
+-------------
+
+テキスト処理をしていると、簡単なクレンジング処理などで
+行単位で並列化出来るような処理がたくさんあります。
+multi は標準入力を1行毎に区切って複数のプロセスに渡すことでテキスト処理の高速化を図るツールです。
+テキストを分割したりプロセス管理したりするので、重い処理をしない場合は遅くなることがあります。
+
+サンプル
+--------
+
+以下のコードでは行毎に hoge.txt を10個の mecab にかけています。
+
+.. code-block:: bash
+
+   cat hoge.txt | multi -m "mecab" -n 10
+
+オプション
+----------
+
+指定できるオプションは以下のとおり。
+
+::
+
+   usage: multi [OPTIONS]
+   -c	combiner command
+   -h	show this message
+   -m	mapper command (required)
+   -n	number of mappers (required)
+   -s	splitter command
+   -S	use internal splitter/combiner which preserve the order of the input sequence
+
+
+複数のプロセスからの出力を最後にまとめて出力します。これを combiner と呼び、外部コマンドを利用したい場合には -c オプションを使います。
+::
+
+   cat hoge.txt | multi -m "sort" -c "sort -m {}"
+
+とすると {} の部分が mapper(-m "sort" の部分) の標準出力のリストに置換されます。
+
+行の順序を保ちたい場合には -S オプションを利用します。この場合、 splitter や combiner は指定できません。
+
+
+インストール
+------------
+
+インストール手順は以下のとおりです。
+
+1. github よりダウンロード
+
+  .. code-block:: bash
+
+     git clone https://github.com/ohtaman/multi.git multi
+
+2. configure & make
+
+  .. code-block:: bash
+
+     cd multi
+     ./configure
+     make
+     sudo make install
+
+
+
+.. author:: default
+.. categories:: programming
+.. tags:: none
+.. comments::
