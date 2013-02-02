@@ -30,8 +30,7 @@ multi は標準入力を1行毎に区切って複数のプロセスに渡すこ�
 
 指定できるオプションは以下のとおり。
 
-
-.. code-block::
+.. code-block:: bash
 
    usage: multi [OPTIONS]
    -c	combiner command

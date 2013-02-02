@@ -43,6 +43,15 @@ multi は標準入力を1行毎に区切って複数のプロセスに渡すこ�
 <div class="section" id="id3">
 <h2>オプション</h2>
 <p>指定できるオプションは以下のとおり。</p>
+<div class="highlight-bash"><div class="highlight"><pre>usage: multi <span class="o">[</span>OPTIONS<span class="o">]</span>
+-c   combiner <span class="nb">command</span>
+-h   show this message
+-m   mapper <span class="nb">command</span> <span class="o">(</span>required<span class="o">)</span>
+-n   number of mappers <span class="o">(</span>required<span class="o">)</span>
+-s   splitter <span class="nb">command</span>
+-S   use internal splitter/combiner which preserve the order of the input sequence
+</pre></div>
+</div>
 <p>複数のプロセスからの出力を最後にまとめて出力します。これを combiner と呼び、外部コマンドを利用したい場合には -c オプションを使います。</p>
 <div class="highlight-bash"><div class="highlight"><pre>cat hoge.txt | multi -m <span class="s2">&quot;sort&quot;</span> -c <span class="s2">&quot;sort -m {}&quot;</span>
 </pre></div>
