@@ -84,22 +84,6 @@
             <li class="left"></li>
             <li class="right"><a href="page1.html">前の投稿</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>2013/02/03</span>
-        </div>
-        <div class="section" id="neo4j">
-<h1><a href="2013/02/03/neo4j.html">neo4jを使ってみました</a></h1>
-<p>tinker のテスト</p>
-</div>
-        <div class="postmeta">
-        <div class="author">
-            <span>投稿者 ohtaman</span>
-        </div>
-        
-        
-        <div class="comments">
-            <a href="http://ohtaman.github.com/blog/2013/02/03/neo4j.html#disqus_thread" data-disqus-identifier="2013/02/03/neo4j">Leave a comment</a>
-        </div>
-    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>2013/02/02</span>
         </div>
         <div class="section" id="id1">
@@ -146,6 +130,88 @@
         <div class="comments">
             <a href="http://ohtaman.github.com/blog/2013/02/02/computer_science.html#disqus_thread" data-disqus-identifier="2013/02/02/computer_science">Leave a comment</a>
         </div>
+    </div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>2013/01/12</span>
+        </div>
+        <div class="section" id="unix">
+<h1><a href="2013/01/12/multi.html">UNIXコマンドを並列化する</a></h1>
+<p>もう一年近く前、会社の方が “UNIXのテキスト処理関連のツールをマルチスレッド対応してほしい” とつぶやいていました。</p>
+<p>「マルチスレッドは面倒くさいけど、マルチプロセスなら簡単だよ!」ってことで、プチフレームワークを書いたのが去年の5月。</p>
+<p>それを最近になって思い出して、 <a class="reference external" href="https://github.com/ohtaman/multi">github</a> にあげたので紹介します。</p>
+<div class="section" id="id1">
+<h2>何をするもの?</h2>
+<p>テキスト処理をしていると、簡単なクレンジング処理などで
+行単位で並列化出来るような処理がたくさんあります。
+multi は標準入力を1行毎に区切って複数のプロセスに渡すことでテキスト処理の高速化を図るツールです。
+テキストを分割したりプロセス管理したりするので、重い処理をしない場合は遅くなることがあります。</p>
+</div>
+<div class="section" id="id2">
+<h2>サンプル</h2>
+<p>以下のコードでは行毎に hoge.txt を10個の mecab にかけています。</p>
+<div class="highlight-bash"><div class="highlight"><pre>cat hoge.txt | multi -m <span class="s2">&quot;mecab&quot;</span> -n 10
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>オプション</h2>
+<p>指定できるオプションは以下のとおり。</p>
+<div class="highlight-bash"><div class="highlight"><pre>usage: multi <span class="o">[</span>OPTIONS<span class="o">]</span>
+-c   combiner <span class="nb">command</span>
+-h   show this message
+-m   mapper <span class="nb">command</span> <span class="o">(</span>required<span class="o">)</span>
+-n   number of mappers <span class="o">(</span>required<span class="o">)</span>
+-s   splitter <span class="nb">command</span>
+-S   use internal splitter/combiner which preserve the order of the input sequence
+</pre></div>
+</div>
+<p>複数のプロセスからの出力を最後にまとめて出力します。これを combiner と呼び、外部コマンドを利用したい場合には -c オプションを使います。</p>
+<div class="highlight-bash"><div class="highlight"><pre>cat hoge.txt | multi -m <span class="s2">&quot;sort&quot;</span> -c <span class="s2">&quot;sort -m {}&quot;</span>
+</pre></div>
+</div>
+<p>とすると {} の部分が mapper(-m “sort” の部分) の標準出力のリストに置換されます。</p>
+<p>行の順序を保ちたい場合には -S オプションを利用します。この場合、 splitter や combiner は指定できません。</p>
+</div>
+<div class="section" id="id4">
+<h2>インストール</h2>
+<p>インストール手順は以下のとおりです。</p>
+<ol class="arabic simple">
+<li>github よりダウンロード</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/ohtaman/multi.git multi
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>configure &amp; make</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>multi
+./configure
+make
+sudo make install
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+        <div class="postmeta">
+        <div class="author">
+            <span>投稿者 ohtaman</span>
+        </div>
+        <div class="categories">
+            <span>
+                カテゴリー:
+                <a href="categories/programming.html">programming</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                タグ:
+                <a href="tags/programming.html">programming</a>, <a href="tags/command.html">command</a>, <a href="tags/linux.html">linux</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://ohtaman.github.com/blog/2013/01/12/multi.html#disqus_thread" data-disqus-identifier="2013/01/12/multi">Leave a comment</a>
+        </div>
     </div><div class="archive_link">
         <a href="archive.html"> &mdash;  Blog Archive  &mdash; </a>
     </div><ul class="related clearfix">
@@ -154,8 +220,6 @@
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>最近の投稿</h1>
     <ul><li>
-            <a href="2013/02/03/neo4j.html">neo4jを使ってみました</a>
-        </li><li>
             <a href="2013/02/02/computer_science.html">情報科学若手の会・冬の陣に参加しました</a>
         </li><li>
             <a href="2013/01/12/multi.html">UNIXコマンドを並列化する</a>
