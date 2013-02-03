@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/02/03/neo4j
    2013/02/02/computer_science
    2013/01/12/multi
    2013/01/03/new_year
