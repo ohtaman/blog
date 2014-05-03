@@ -1,27 +1,37 @@
-<!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>引っ越してきました &mdash; 子曰く、</title><meta name="description" content="">
+        <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-
-
-        <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
-        <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
-        <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-        <link rel="stylesheet" href="../../../_static/webfont.css" type="text/css"><link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <title>引っ越してきました &mdash; 子曰く、</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/font-awesome.min.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
         <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
-        <script src="../../../_static/main.js"></script><link rel="top" title="子曰く、" href="../../../index.html" /><link rel="prev" title="新年明けましておめでとうございます。" href="../../../2013/01/03/new_year.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <script src="../../../_static/main.js"></script>
+        <link rel="prev" title="新年明けましておめでとうございます。" href="../../../2013/01/03/new_year.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '1.0.2',
+        VERSION:     '1.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -51,7 +61,8 @@
 
             if (sidebar.offsetHeight > documentwrapper.offsetHeight)
             {
-                documentwrapper.style.minHeight = sidebar.offsetHeight + "px";
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
             }
 
             // Scroll to content if on small screen
@@ -62,29 +73,27 @@
         });
     </script>
 </head>
-    <body>
+    <body role="document">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-      <div id="container"><header>
+      <div id="container"><header role="banner">
             <hgroup>
-              <h1><a href="../../../index.html">子曰く、</a></h1>
-              <h2>「もえもえきゅん♡」</h2>
-            </hgroup>
+              <h1><a href="../../../index.html">子曰く、</a></h1><h2>「もえもえきゅん♡」</h2></hgroup>
           </header>
-      <nav>
+      <nav role="navigation">
             <ul><li class="quicklink"><div class="rss">
-        <a href="../../../rss.html" title="Subscribe via RSS"><span class="webfont">B</span></a>
+        <a href="../../../rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
     </div></li><li class="main-nav">
-                <a href="../../../index.html">ホーム</a>
-              </li>
+                  <a href="../../../index.html">ホーム</a>
+                </li>
               </ul>
-          </nav><div class="main-container"><div class="main wrapper clearfix"><article><ul class="related clearfix">
+          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
             <li class="left"> &laquo; <a href="../../../2013/01/03/new_year.html">新年明けましておめでとうございます。</a></li>
             <li class="right"></li>
         </ul><div class="timestamp postmeta">
-            <span>2012/12/28</span>
+            <span>12月 28, 2012</span>
         </div>
     <div class="section" id="id1">
 <h1>引っ越してきました</h1>
@@ -102,8 +111,7 @@
                 <a href="../../../categories/others.html">others</a></span>
         </div>
         
-        
-    </div>
+        </div>
     <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "blog-ohtaman";    var disqus_identifier = "2012/12/28/first_post";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
             <li class="left"> &laquo; <a href="../../../2013/01/03/new_year.html">新年明けましておめでとうございます。</a></li>
             <li class="right"></li>
@@ -121,11 +129,11 @@
             <a href="#">引っ越してきました</a>
         </li></ul>
 </div>
-</section><section><div class="widget" id="searchbox">
+</section><section><div class="widget" id="searchbox" role="search">
     <h1>Search</h1>
     <form action="../../../search.html" method="get">
         <input type="text" name="q" />
-        <button type="submit"><span class="webfont">L</span></button>
+        <button type="submit"><span class="fa fa-search"></span></button>
     </form>
 </div></section><section><div class="widget">
     <h1>カテゴリー</h1>
@@ -133,7 +141,7 @@
 </div></section><section><div class="widget">
     <h1>タグ</h1><a href="../../../tags/business.html">business</a> (1), <a href="../../../tags/career.html">career</a> (2), <a href="../../../tags/command.html">command</a> (1), <a href="../../../tags/event.html">event</a> (2), <a href="../../../tags/linux.html">linux</a> (1), <a href="../../../tags/programming.html">programming</a> (2)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
-        <div class="footer-container"><footer class="wrapper">&copy; Copyright 2012, ohtaman. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- fotter-container -->
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2012, ohtaman. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
       </div> <!--! end of #container --><!--[if lt IE 7 ]>
           <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
