@@ -22,8 +22,8 @@ Android の起動には、今回は `Genymotion <http://www.genymotion.com>`_ �
 --------
 
 以下の2つのブログを参考にさせていただきました。
-- `Shunsuke Sawada WORKBROAD <http://www.workabroad.jp/posts/2037>`_
-- `Yohei Blog <http://blog.yohei.org/android-genymotion2-x-install-googleplay/>`_
+ - `Shunsuke Sawada WORKBROAD <http://www.workabroad.jp/posts/2037>`_
+ - `Yohei Blog <http://blog.yohei.org/android-genymotion2-x-install-googleplay/>`_
 
 手順
 ----
