@@ -6,8 +6,6 @@ Sitemap
 
    2014/05/05/kindle_mac
    2013/02/15/skywatch
-   .. 2013/02/15/kdenlive
-   .. 2013/02/03/neo4j
    2013/02/02/computer_science
    2013/01/12/multi
    2013/01/03/new_year

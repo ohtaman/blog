@@ -102,8 +102,11 @@ Google Apps を追加する
 以下の 2 つのファイルが必要です。
 
 1. GApps
+
  - http://goo.im/gapps
+
 2. ARM Translation Installer
+
  - https://docs.google.com/file/d/0B2oUUnig1zCOV01tSnRwNUpGdzQ/edit
 
 Genymotion内でランチャーを起動し、そこに D&D することで Android 端末にインストールすることがでます。
