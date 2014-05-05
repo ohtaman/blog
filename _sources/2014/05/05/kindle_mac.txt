@@ -125,6 +125,6 @@ Mac 上で Amazon.co.jp の Kindle 本を読む方法をまとめました。
 
 
 .. author:: default
-.. categories:: none
-.. tags:: none
+.. categories:: computer
+.. tags:: mac,command,kindle
 .. comments::
