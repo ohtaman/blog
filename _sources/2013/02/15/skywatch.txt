@@ -10,6 +10,10 @@
 
 本当は知人数名でこっそりやるつもりだったのでちょっと動揺しましたが、 まぁ、そういうのもありかな、と思って参加しました。
 
+..
+  .. gist:: https://gist.github.com/shomah4a/5149412
+  .. slide:: http://www.slideshare.net/TakeshiKomiya/blockdiag-a-simple-diagram-generator
+
 内容
 ----
 

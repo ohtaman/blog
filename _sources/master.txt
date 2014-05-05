@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/05/05/dmm_english
    2014/05/05/kindle_mac
    2013/02/15/skywatch
    2013/02/02/computer_science

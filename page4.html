@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>ページ 3 &mdash; 子曰く、</title>
+        <title>ページ 4 &mdash; 子曰く、</title>
             <link rel="stylesheet" href="_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="_static/main.css" type="text/css">
@@ -28,7 +28,7 @@
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
         <script src="_static/main.js"></script>
-        <link rel="next" title="前の投稿" href="page4.html" /><link rel="prev" title="次の投稿" href="page2.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="prev" title="次の投稿" href="page3.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.4.2',
@@ -90,118 +90,14 @@
                 </li>
               </ul>
           </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="page2.html">次の投稿</a></li>
-            <li class="right"><a href="page4.html">前の投稿</a> &raquo; </li>
+            <li class="left"> &laquo; <a href="page3.html">次の投稿</a></li>
+            <li class="right"></li>
         </ul><div class="timestamp postmeta">
-            <span>1月 12, 2013</span>
+            <span>12月 28, 2012</span>
         </div>
-        <h1><a href="2013/01/12/multi.html">UNIXコマンドを並列化する</a></h1>
-<p>もう一年近く前、会社の方が “UNIXのテキスト処理関連のツールをマルチスレッド対応してほしい” とつぶやいていました。</p>
-<p>「マルチスレッドは面倒くさいけど、マルチプロセスなら簡単だよ!」ってことで、プチフレームワークを書いたのが去年の5月。</p>
-<p>それを最近になって思い出して、 <a class="reference external" href="https://github.com/ohtaman/multi">github</a> にあげたので紹介します。</p>
-<div class="section" id="id1">
-<h2>何をするもの?</h2>
-<p>テキスト処理をしていると、簡単なクレンジング処理などで
-行単位で並列化出来るような処理がたくさんあります。
-multi は標準入力を1行毎に区切って複数のプロセスに渡すことでテキスト処理の高速化を図るツールです。
-テキストを分割したりプロセス管理したりするので、重い処理をしない場合は遅くなることがあります。</p>
-</div>
-<div class="section" id="id2">
-<h2>サンプル</h2>
-<p>以下のコードでは行毎に hoge.txt を10個の mecab にかけています。</p>
-<div class="highlight-bash"><div class="highlight"><pre>cat hoge.txt | multi -m <span class="s2">"mecab"</span> -n 10
-</pre></div>
-</div>
-</div>
-<div class="section" id="id3">
-<h2>オプション</h2>
-<p>指定できるオプションは以下のとおり。</p>
-<div class="highlight-bash"><div class="highlight"><pre>usage: multi <span class="o">[</span>OPTIONS<span class="o">]</span>
--c   combiner <span class="nb">command</span>
--h   show this message
--m   mapper <span class="nb">command</span> <span class="o">(</span>required<span class="o">)</span>
--n   number of mappers <span class="o">(</span>required<span class="o">)</span>
--s   splitter <span class="nb">command</span>
--S   use internal splitter/combiner which preserve the order of the input sequence
-</pre></div>
-</div>
-<p>まず、言葉の定義ですが、標準入力を1行毎に区切る部分を splitter、
-それを受け取って具体的な処理をする部分を mapper、
-処理結果を一つにまとめて出力する部分を combiner と呼ぶことにしました。
-それぞれ、 -s、 -m、 -c でコマンドを指定することができます。</p>
-<p>splitter と combiner は必須オプションではなく、
-省略すると行ごとに区切って、空いている mapper にわたし、
-mapper の出力を早いもの順で結合して出力します。
-combiner にコマンドを指定する場合は、 入力ファイル名に対応する部分に {} を書きます。
-例えば</p>
-<div class="highlight-bash"><div class="highlight"><pre>cat hoge.txt | multi -m <span class="s2">"sort"</span> -c <span class="s2">"sort -m {}"</span>
-</pre></div>
-</div>
-<p>とすると {} の部分が mapper(-m “sort” の部分) の標準出力のリストに置換されます。</p>
-<p>また、行の順序を保ちたい場合には -S オプションを利用します。この場合、 splitter や combiner は指定できません。</p>
-</div>
-<div class="section" id="id4">
-<h2>インストール</h2>
-<p>インストール手順は以下のとおりです。</p>
-<ol class="arabic simple">
-<li>github よりダウンロード</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/ohtaman/multi.git multi
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>configure &amp; make</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>multi
-./configure
-make
-sudo make install
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-
-        <div class="postmeta">
-        <div class="author">
-            <span>投稿者 ohtaman</span>
-        </div>
-        <div class="categories">
-            <span>
-                カテゴリー:
-                <a href="categories/programming.html">programming</a></span>
-        </div>
-        <div class="tags">
-            <span>
-                タグ:
-                <a href="tags/programming.html">programming</a>, <a href="tags/command.html">command</a>, <a href="tags/linux.html">linux</a></span>
-        </div>
-        <div class="comments">
-            <a href="http://blog.0-8.in/2013/01/12/multi.html#disqus_thread" data-disqus-identifier="2013/01/12/multi">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>1月 03, 2013</span>
-        </div>
-        <h1><a href="2013/01/03/new_year.html">新年明けましておめでとうございます。</a></h1>
-<p>昨年は大変お世話になりました。今年もよろしくお願いします。</p>
-<div class="line-block">
-<div class="line">昨年は、プライベートではオーロラ鑑賞などの貴重な体験をすることができましたし、新しい仲間も増え、なかなか充実した一年でした。</div>
-<div class="line">一方仕事面は、なかなか自分の思うように事が進まず、考えも伝わらず、悩んだりイライラしたりすることが多かった気がします。いろいろ考えさせられたという意味では良かったのですが、まぁ、あまりこの感じは引きずりたくないものです。</div>
-</div>
-<p>さて、今年の目標についていろいろ考えたのですが、結局</p>
-<ol class="arabic simple">
-<li>仕事のために自分を犠牲にしない</li>
-<li>自分の市場価値を知る</li>
-<li>金銭感覚を身につける</li>
-<li>ダイエットをする</li>
-</ol>
-<div class="line-block">
-<div class="line">の四つにしました。</div>
-<div class="line">入社時から「3年間はココで働いて、その時点でココが好きなら残るし、そうじゃなければ残らない」と、色々な人に話していたのですが、この4月でついに入社3年です。その判断をするときに、自分の市場価値を把握しておきたいなぁと。</div>
-<div class="line">今の自分はそもそも転職(or自立)できるのか、できるとしたらいくらもらえるか、そして、その金額に見合うだけの価値を本当に提供できるか。「他にいけるかわからないから、今の会社に残る」とかだけは絶対にいやなんですよね。「他にもいろいろ選択肢があるけど、やっぱココだね。」っていう気持ちで残りたい。残るなら。</div>
-</div>
-<p>あと、体重は7kg落とします。今年の健康診断までに。</p>
+        <h1><a href="2012/12/28/first_post.html">引っ越してきました</a></h1>
+<p>引っ越してきました。
+今後ともよろしくお願いします。</p>
 
         <div class="postmeta">
         <div class="author">
@@ -212,18 +108,14 @@ sudo make install
                 カテゴリー:
                 <a href="categories/others.html">others</a></span>
         </div>
-        <div class="tags">
-            <span>
-                タグ:
-                <a href="tags/event.html">event</a>, <a href="tags/career.html">career</a>, <a href="tags/business.html">business</a></span>
-        </div>
+        
         <div class="comments">
-            <a href="http://blog.0-8.in/2013/01/03/new_year.html#disqus_thread" data-disqus-identifier="2013/01/03/new_year">Leave a comment</a>
+            <a href="http://blog.0-8.in/2012/12/28/first_post.html#disqus_thread" data-disqus-identifier="2012/12/28/first_post">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; ブログアーカイブ &mdash; </a>
     </div><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="page2.html">次の投稿</a></li>
-            <li class="right"><a href="page4.html">前の投稿</a> &raquo; </li>
+            <li class="left"> &laquo; <a href="page3.html">次の投稿</a></li>
+            <li class="right"></li>
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>最近の投稿</h1>
     <ul><li>
