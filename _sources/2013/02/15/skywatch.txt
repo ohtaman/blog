@@ -80,6 +80,6 @@
 
 
 .. author:: default
-.. categories:: none
-.. tags:: none
+.. categories:: lifestyle
+.. tags:: event,nature
 .. comments::

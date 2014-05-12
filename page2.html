@@ -93,6 +93,182 @@
             <li class="left"> &laquo; <a href="index.html">次の投稿</a></li>
             <li class="right"><a href="page3.html">前の投稿</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>5月 05, 2014</span>
+        </div>
+        <h1><a href="2014/05/05/kindle_mac.html">Amazon.co.jpアカウントのKindle本をMacで読む</a></h1>
+<p>Windows や Mac 向けに Kindle App や Cloud Reader があるのですが、
+Amazon.co.jp で購入した書籍は読むことができません。
+Amazon.com のアカウントを取得し、 Amazon.co.jp のアカウントと統合しても、
+表紙しかみることができず、ダウンロード時にはじかれてしまいます。</p>
+<p>Kindle端末やiPad、Androidタブレットなどがあれば普通は困らないのですが、
+今回ちょっと Mac 上で Kindle を読みたい状況になったので、
+Mac 上で Kindle 本を読む方法を調べました。</p>
+<p>ちなみに、ここでは Mac を前提としていますが、おそらく Windows でも同様の方法で読むことができます。</p>
+<div class="section" id="id1">
+<h2>要するに</h2>
+<p>仮想マシン上で Android を起動し、その中で Kindle for Android を起動します。
+Android の起動には、今回は <a class="reference external" href="http://www.genymotion.com">Genymotion</a> を利用しました。</p>
+</div>
+<div class="section" id="blog">
+<h2>参考blog</h2>
+<p>以下の2つのブログを参考にさせていただきました。</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.workabroad.jp/posts/2037">Shunsuke Sawada WORKBROAD</a></li>
+<li><a class="reference external" href="http://blog.yohei.org/android-genymotion2-x-install-googleplay">Yohei Blog</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>手順</h2>
+<div class="section" id="id3">
+<h3>Genymotionをインストールする</h3>
+<p>Genymotion をインストールする前に <cite>VirtualBox &lt;https://www.virtualbox.org/&gt;</cite> をインストールします。
+もし既にインストール済の場合は、スキップしていただいてかまいません。</p>
+<ol class="arabic simple">
+<li>VirutalBox をダウンロードする</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a> に最新のバイナリがありますので、
+このページから for OS X hosts をダウンロードします。</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>VirtualBox をインストールする</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>ウィザードに従い、普通にインストールします。</li>
+</ul>
+</div></blockquote>
+<p>次に、Genymotion をインストールします。</p>
+<ol class="arabic simple" start="3">
+<li><a class="reference external" href="http://www.genymotion.com">公式サイト</a> からGenymotion (Free版) をダウンロードする</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>ダウンロードにはユーザー登録が必要です。</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Genymotio をインストールする</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>ウィザードに従い、普通にインストールします。</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h3>Genymotion にアンドロイド端末を追加する</h3>
+<p>Genymotion のウィザードに従って端末を追加します。</p>
+<ol class="arabic simple">
+<li>Genymotion を起動する</li>
+<li>Add をクリックして、端末を追加する</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>適当な端末を選択し、数回 Next を押せば O.K. です。</li>
+<li>ちなみに私は “Custom Tablet 10’’ -4.3 - API 18 - 1280x800” を選択しました。</li>
+</ul>
+</div></blockquote>
+<p>ここで起動したいところですが、
+実は VirtualBox のネットワークの設定が必要です。</p>
+<ol class="arabic simple">
+<li>VirtualBox を起動する</li>
+<li>新規のネットワークを追加する</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>メニュー &gt; VirtualBox &gt; 環境設定 &gt; ネットワーク &gt; ホストオンリーネットワーク(H)</li>
+<li>“+”ボタンをクリックして、vboxnet1 を追加</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>DHCPサーバーを有効化する</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>vboxnet1 を選択して、設定ボタンをクリック &gt; DHCP サーバー</li>
+<li>サーバーを有効化をチェック</li>
+<li>ネットワークを適当に設定。ちなみに私の設定は</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>サーバーアドレス: 192.168.56.1</li>
+<li>サーバーマスク: 255.255.255.0</li>
+<li>アドレス下限: 192.168.56.101</li>
+<li>アドレス上限: 192.168.56.254</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Android 端末のネットワーク設定を変更する</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>VirtualBox で、今回生成された Android 端末に対応するイメージを選択</li>
+<li>アダプター1を vboxnet1 にひもづける<ul>
+<li>割り当て: ホストオンリーアダプター</li>
+<li>名前: vboxnet1</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Genymotion から Android 端末を起動する</li>
+</ol>
+</div>
+<div class="section" id="google-apps">
+<h3>Google Apps を追加する</h3>
+<p>以下の 2 つのファイルが必要です。</p>
+<ol class="arabic simple">
+<li>GApps</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://goo.im/gapps">http://goo.im/gapps</a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>ARM Translation Installer</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://docs.google.com/file/d/0B2oUUnig1zCOV01tSnRwNUpGdzQ/edit">https://docs.google.com/file/d/0B2oUUnig1zCOV01tSnRwNUpGdzQ/edit</a></li>
+</ul>
+</div></blockquote>
+<p>Genymotion内でランチャーを起動し、そこに D&amp;D することで Android 端末にインストールすることがでます。</p>
+</div>
+<div class="section" id="kindle-for-android">
+<h3>Kindle for Android をインストールする</h3>
+<p>Google Play Store が利用可能なので、
+Kindle を検索してインストールすれば O.K. です。</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>まとめ</h2>
+<p>Mac 上で Amazon.co.jp の Kindle 本を読む方法をまとめました。</p>
+</div>
+
+        <div class="postmeta">
+        <div class="author">
+            <span>投稿者 ohtaman</span>
+        </div>
+        <div class="categories">
+            <span>
+                カテゴリー:
+                <a href="categories/lifestyle.html">lifestyle</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                タグ:
+                <a href="tags/mac.html">mac</a>, <a href="tags/command.html">command</a>, <a href="tags/kindle.html">kindle</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://blog.0-8.in/2014/05/05/kindle_mac.html#disqus_thread" data-disqus-identifier="2014/05/05/kindle_mac">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>2月 15, 2013</span>
         </div>
         <h1><a href="2013/02/15/skywatch.html">天体観測イベント</a></h1>
@@ -159,55 +335,18 @@
         <div class="author">
             <span>投稿者 ohtaman</span>
         </div>
-        
-        
-        <div class="comments">
-            <a href="http://blog.0-8.in/2013/02/15/skywatch.html#disqus_thread" data-disqus-identifier="2013/02/15/skywatch">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>2月 02, 2013</span>
-        </div>
-        <h1><a href="2013/02/02/computer_science.html">情報科学若手の会・冬の陣に参加しました</a></h1>
-<p>先週のことですが、ATNDで情報科学若手の会・冬の陣というものをみつけ、参加してきました。
-情報科学/情報工学系の学会・交流会に参加したのは初めてだったので、
-行くまでは場違いじゃないかとか色々考えたりもしましたが、
-運営側の配慮もあってか、そんなこともなく溶け込むことが出来てなかなか楽しかったです。</p>
-<p>構成は、1人あたり15分の発表会と懇親会(こっちがメインだそうです。)で、
-発表内容はコンピューターに関わることならなんでもOKのようです。ちなみに私は発表していません。</p>
-<div class="section" id="id2">
-<h2>発表会</h2>
-<p>発表の内容は本当にバラバラで、宇宙の話が出てきたり、ネットストーカーの話がでてきたり。
-学生やエンジニアでなくても楽しんで聞けるだろうと思えるくらい、入門的というか概要紹介的な発表が多かったです。
-数式もほぼ出てきていません。</p>
-<p>物理の分野ではなかなかこういう気楽な雰囲気の発表会はない(みんな自分の専門分野のことをきちんと説明するような会が多い)ので、情報系の人たちを羨ましく思いました。</p>
-</div>
-<div class="section" id="id3">
-<h2>懇親会</h2>
-<p>本来はこっちがメインらしいです。やっぱり技術とかの話を飲みながら出来るっていうのは楽しいですね。
-大学時代ならともかく、普段の飲み会ではなかなかそんな話にはなりませんし。</p>
-<p>初参加というのもあって、知り合いはゼロ。
-なにか発表するネタを用意しておいたらもっとコミュニケーションとりやすくてがよかったなぁと思いました。
-あと、若い学生さんとたくさん喋って、自分が物理の研究をしていた頃を思いだし、
-もう一度アカデミックな世界に戻りたくなってしまいました。
-あの頃がなつかしい...</p>
-<p>まぁ、そんな感じです。</p>
-</div>
-
-        <div class="postmeta">
-        <div class="author">
-            <span>投稿者 ohtaman</span>
-        </div>
         <div class="categories">
             <span>
                 カテゴリー:
-                <a href="categories/computer_science.html">computer science</a></span>
+                <a href="categories/lifestyle.html">lifestyle</a></span>
         </div>
         <div class="tags">
             <span>
                 タグ:
-                <a href="tags/programming.html">programming</a>, <a href="tags/event.html">event</a>, <a href="tags/career.html">career</a></span>
+                <a href="tags/event.html">event</a>, <a href="tags/nature.html">nature</a></span>
         </div>
         <div class="comments">
-            <a href="http://blog.0-8.in/2013/02/02/computer_science.html#disqus_thread" data-disqus-identifier="2013/02/02/computer_science">Leave a comment</a>
+            <a href="http://blog.0-8.in/2013/02/15/skywatch.html#disqus_thread" data-disqus-identifier="2013/02/15/skywatch">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; ブログアーカイブ &mdash; </a>
     </div><ul class="related clearfix">
@@ -216,6 +355,8 @@
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>最近の投稿</h1>
     <ul><li>
+            <a href="2014/05/13/izu_camping.html">西伊豆キャンプ</a>
+        </li><li>
             <a href="2014/05/05/dmm_english.html">DMM英会話</a>
         </li><li>
             <a href="2014/05/05/kindle_mac.html">Amazon.co.jpアカウントのKindle本をMacで読む</a>
@@ -239,9 +380,9 @@
     </form>
 </div></section><section><div class="widget">
     <h1>カテゴリー</h1>
-    <ul><li><a href="categories/computer_science.html">computer science</a> (1)</li><li><a href="categories/lifestyle.html">lifestyle</a> (2)</li><li><a href="categories/others.html">others</a> (2)</li><li><a href="categories/programming.html">programming</a> (1)</li></ul>
+    <ul><li><a href="categories/computer_science.html">computer science</a> (1)</li><li><a href="categories/lifestyle.html">lifestyle</a> (4)</li><li><a href="categories/others.html">others</a> (2)</li><li><a href="categories/programming.html">programming</a> (1)</li></ul>
 </div></section><section><div class="widget">
-    <h1>タグ</h1><a href="tags/business.html">business</a> (1), <a href="tags/career.html">career</a> (3), <a href="tags/command.html">command</a> (2), <a href="tags/dmm.html">dmm</a> (1), <a href="tags/english.html">english</a> (1), <a href="tags/event.html">event</a> (2), <a href="tags/kindle.html">kindle</a> (1), <a href="tags/linux.html">linux</a> (1), <a href="tags/mac.html">mac</a> (1), <a href="tags/programming.html">programming</a> (2)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+    <h1>タグ</h1><a href="tags/business.html">business</a> (1), <a href="tags/career.html">career</a> (3), <a href="tags/command.html">command</a> (2), <a href="tags/dmm.html">dmm</a> (1), <a href="tags/english.html">english</a> (1), <a href="tags/event.html">event</a> (4), <a href="tags/kindle.html">kindle</a> (1), <a href="tags/linux.html">linux</a> (1), <a href="tags/mac.html">mac</a> (1), <a href="tags/nature.html">nature</a> (2), <a href="tags/programming.html">programming</a> (2)</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
 
         <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2012, ohtaman. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
 
