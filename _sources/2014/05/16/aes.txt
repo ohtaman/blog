@@ -66,6 +66,6 @@ Twitter や Google が追従しようとしている状況との事です。
 現状のうざい広告は大嫌いなので、はやくいい感じになることを祈ります。
 
 .. author:: default
-.. categories:: none
-.. tags:: none
+.. categories:: adtech
+.. tags::  adtech,programming,event,business
 .. comments::
