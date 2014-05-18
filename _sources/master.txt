@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/05/18/gyoza
    2014/05/16/aes
    2014/05/13/izu_camping
    2014/05/05/dmm_english

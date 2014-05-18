@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="My blog">
         <meta name="viewport" content="width=device-width">
-        <title>Amazon.co.jpアカウントのKindle本をMacで読む &mdash; 子曰く、</title>
+        <title>宇都宮で餃子をたくさん食べました &mdash; 子曰く、</title>
             <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
             <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
@@ -28,7 +28,7 @@
         <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="../../../_static/plugins.js"></script>
         <script src="../../../_static/main.js"></script>
-        <link rel="next" title="天体観測イベント" href="../../../2013/02/15/skywatch.html" /><link rel="prev" title="DMM英会話" href="dmm_english.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+        <link rel="next" title="Ad Engineering Summit 2014" href="../16/aes.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
         VERSION:     '1.4.2',
@@ -90,200 +90,92 @@
                 </li>
               </ul>
           </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="dmm_english.html">DMM英会話</a></li>
-            <li class="right"><a href="../../../2013/02/15/skywatch.html">天体観測イベント</a> &raquo; </li>
+            <li class="left"></li>
+            <li class="right"><a href="../16/aes.html">Ad Engineering Summit 2014</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
-            <span>5月 05, 2014</span>
+            <span>5月 18, 2014</span>
         </div>
-    <div class="section" id="amazon-co-jpkindlemac">
-<h1>Amazon.co.jpアカウントのKindle本をMacで読む</h1>
-<p>Windows や Mac 向けに Kindle App や Cloud Reader があるのですが、
-Amazon.co.jp で購入した書籍は読むことができません。
-Amazon.com のアカウントを取得し、 Amazon.co.jp のアカウントと統合しても、
-表紙しかみることができず、ダウンロード時にはじかれてしまいます。</p>
-<p>Kindle端末やiPad、Androidタブレットなどがあれば普通は困らないのですが、
-今回ちょっと Mac 上で Kindle を読みたい状況になったので、
-Mac 上で Kindle 本を読む方法を調べました。</p>
-<p>ちなみに、ここでは Mac を前提としていますが、おそらく Windows でも同様の方法で読むことができます。</p>
-<div class="section" id="id1">
-<h2>要するに</h2>
-<p>仮想マシン上で Android を起動し、その中で Kindle for Android を起動します。
-Android の起動には、今回は <a class="reference external" href="http://www.genymotion.com">Genymotion</a> を利用しました。</p>
-</div>
-<div class="section" id="blog">
-<h2>参考blog</h2>
-<p>以下の2つのブログを参考にさせていただきました。</p>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://www.workabroad.jp/posts/2037">Shunsuke Sawada WORKBROAD</a></li>
-<li><a class="reference external" href="http://blog.yohei.org/android-genymotion2-x-install-googleplay/">Yohei Blog</a></li>
-</ul>
-</div></blockquote>
+    <div class="section" id="id1">
+<h1>宇都宮で餃子をたくさん食べました</h1>
+<p>宇都宮に住んでいる大学時代の先輩の企画で、餃子を半日食べまくってきました。</p>
+<p>メンバーは当時のサークルの先輩方(+そのご家族)。
+ちょくちょく会っている人もいれば卒業後一度もあっていなかった方もいて、
+とても懐かしい、楽しい時間を過ごせました。</p>
+<p>以下は食べた餃子のまとめ。
+「(冷凍)」 とあるのは、持ち帰って家で調理して食べたものなので、お店の味とは違うかもしれません。</p>
 </div>
 <div class="section" id="id2">
-<h2>手順</h2>
-<div class="section" id="id3">
-<h3>Genymotionをインストールする</h3>
-<p>Genymotion をインストールする前に <cite>VirtualBox &lt;https://www.virtualbox.org/&gt;</cite> をインストールします。
-もし既にインストール済の場合は、スキップしていただいてかまいません。</p>
+<h1>餃子メモ</h1>
 <ol class="arabic simple">
-<li>VirutalBox をダウンロードする</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a> に最新のバイナリがありますので、
-このページから for OS X hosts をダウンロードします。</li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>VirtualBox をインストールする</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>ウィザードに従い、普通にインストールします。</li>
-</ul>
-</div></blockquote>
-<p>次に、Genymotion をインストールします。</p>
-<ol class="arabic simple" start="3">
-<li><a class="reference external" href="http://www.genymotion.com">公式サイト</a> からGenymotion (Free版) をダウンロードする</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>ダウンロードにはユーザー登録が必要です。</li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li>Genymotio をインストールする</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>ウィザードに従い、普通にインストールします。</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id5">
-<h3>Genymotion にアンドロイド端末を追加する</h3>
-<p>Genymotion のウィザードに従って端末を追加します。</p>
-<ol class="arabic simple">
-<li>Genymotion を起動する</li>
-<li>Add をクリックして、端末を追加する</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>適当な端末を選択し、数回 Next を押せば O.K. です。</li>
-<li>ちなみに私は &#8220;Custom Tablet 10&#8217;&#8217; -4.3 - API 18 - 1280x800&#8221; を選択しました。</li>
-</ul>
-</div></blockquote>
-<p>ここで起動したいところですが、
-実は VirtualBox のネットワークの設定が必要です。</p>
-<ol class="arabic simple">
-<li>VirtualBox を起動する</li>
-<li>新規のネットワークを追加する</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>メニュー &gt; VirtualBox &gt; 環境設定 &gt; ネットワーク &gt; ホストオンリーネットワーク(H)</li>
-<li>&#8220;+&#8221;ボタンをクリックして、vboxnet1 を追加</li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>DHCPサーバーを有効化する</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>vboxnet1 を選択して、設定ボタンをクリック &gt; DHCP サーバー</li>
-<li>サーバーを有効化をチェック</li>
-<li>ネットワークを適当に設定。ちなみに私の設定は</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>サーバーアドレス: 192.168.56.1</li>
-<li>サーバーマスク: 255.255.255.0</li>
-<li>アドレス下限: 192.168.56.101</li>
-<li>アドレス上限: 192.168.56.254</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li>Android 端末のネットワーク設定を変更する</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>VirtualBox で、今回生成された Android 端末に対応するイメージを選択</li>
-<li>アダプター1を vboxnet1 にひもづける<ul>
-<li>割り当て: ホストオンリーアダプター</li>
-<li>名前: vboxnet1</li>
+<li><a class="reference external" href="http://www.aogen.co.jp/company/shop_paseo">青源</a><ul>
+<li>もともと味噌のお店らしく、みそだれがついてきます。
+青源水餃子/ネギ味噌焼餃子/青源特製焼餃子を食べましたが、
+水餃子の酢の効いたスープが餃子によくあっていました。</li>
 </ul>
 </li>
+<li><a class="reference external" href="http://www.gashuden.co.jp/gyoten.html">餃天堂</a><ul>
+<li>米粉をつかったもちもちの皮がよかった。焼がおすすめ。水は個人的には微妙な感じ。</li>
 </ul>
-</div></blockquote>
-<ol class="arabic simple" start="5">
-<li>Genymotion から Android 端末を起動する</li>
-</ol>
-</div>
-<div class="section" id="google-apps">
-<h3>Google Apps を追加する</h3>
-<p>以下の 2 つのファイルが必要です。</p>
-<ol class="arabic simple">
-<li>GApps</li>
+</li>
+<li><a class="reference external" href="http://www.minmin.co.jp/">宇都宮みんみん</a><ul>
+<li>オーソドックスな餃子。青源/餃天堂と個性的な餃子が続いたので、口直しに良かったです。</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://www.kouraku.net/">幸楽</a> (冷凍)<ul>
+<li>うまみがしっかりしていて美味しかったです。</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://tabelog.com/tochigi/A0901/A090101/9010480/">美智都</a> (冷凍)<ul>
+<li>皮に醤油が練り込まれている。僕には味が濃すぎました。</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://www.ucatv.ne.jp/ishop/masashi/">政嗣</a><ul>
+<li>うまい。</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://www.ryu-mon.com/">龍門</a> (冷凍)<ul>
+<li>酔っていて味をよく覚えていませんが、美味しかったんじゃないかなぁ。</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://www.localplace.jp/t100043200/">らーめん 武蔵</a> (冷凍)<ul>
+<li>スープ餃子。これは、おいしかった。</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://www.gyouza-kaikan.com/">餃子会館</a> (冷凍)<ul>
+<li>焼き方の問題の可能性もありますが、うまみがあまり感じられなかった気がします。</li>
+</ul>
+</li>
+<li><a class="reference external" href="http://www.tochinavi.net/spot/home/?id=910">中華トントン</a> (冷凍)</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference external" href="http://goo.im/gapps">http://goo.im/gapps</a></li>
+<li>大きくてジューシー。結構好みの味でした。</li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="2">
-<li>ARM Translation Installer</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="https://docs.google.com/file/d/0B2oUUnig1zCOV01tSnRwNUpGdzQ/edit">https://docs.google.com/file/d/0B2oUUnig1zCOV01tSnRwNUpGdzQ/edit</a></li>
-</ul>
-</div></blockquote>
-<p>Genymotion内でランチャーを起動し、そこに D&amp;D することで Android 端末にインストールすることがでます。</p>
-</div>
-<div class="section" id="kindle-for-android">
-<h3>Kindle for Android をインストールする</h3>
-<p>Google Play Store が利用可能なので、
-Kindle を検索してインストールすれば O.K. です。</p>
-</div>
-</div>
-<div class="section" id="id6">
-<h2>まとめ</h2>
-<p>Mac 上で Amazon.co.jp の Kindle 本を読む方法をまとめました。</p>
-</div>
 </div>
 
     <div class="postmeta">
         <div class="author">
             <span>投稿者 ohtaman</span>
         </div>
-        <div class="categories">
-            <span>
-                カテゴリー:
-                <a href="../../../categories/lifestyle.html">lifestyle</a></span>
+        
+        
         </div>
-        <div class="tags">
-            <span>
-                タグ:
-                <a href="../../../tags/mac.html">mac</a>, <a href="../../../tags/command.html">command</a>, <a href="../../../tags/kindle.html">kindle</a></span>
-        </div>
-        </div>
-    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "blog-ohtaman";    var disqus_identifier = "2014/05/05/kindle_mac";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
-            <li class="left"> &laquo; <a href="dmm_english.html">DMM英会話</a></li>
-            <li class="right"><a href="../../../2013/02/15/skywatch.html">天体観測イベント</a> &raquo; </li>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "blog-ohtaman";    var disqus_identifier = "2014/05/18/gyoza";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../16/aes.html">Ad Engineering Summit 2014</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget">
     <h1>最近の投稿</h1>
     <ul><li>
-            <a href="../18/gyoza.html">宇都宮で餃子をたくさん食べました</a>
+            <a href="#">宇都宮で餃子をたくさん食べました</a>
         </li><li>
             <a href="../16/aes.html">Ad Engineering Summit 2014</a>
         </li><li>
             <a href="../13/izu_camping.html">西伊豆キャンプ</a>
         </li><li>
-            <a href="dmm_english.html">DMM英会話</a>
+            <a href="../05/dmm_english.html">DMM英会話</a>
         </li><li>
-            <a href="#">Amazon.co.jpアカウントのKindle本をMacで読む</a>
+            <a href="../05/kindle_mac.html">Amazon.co.jpアカウントのKindle本をMacで読む</a>
         </li><li>
             <a href="../../../2013/02/15/skywatch.html">天体観測イベント</a>
         </li><li>
