@@ -48,6 +48,6 @@
 
 
 .. author:: default
-.. categories:: none
-.. tags:: none
+.. categories:: lifestyle
+.. tags:: event,food
 .. comments::
