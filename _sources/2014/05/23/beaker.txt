@@ -120,6 +120,6 @@ Cell を削除
 
 
 .. author:: default
-.. categories:: none
-.. tags:: computer science,
+.. categories:: lifestyle
+.. tags:: business, programming,
 .. comments::
