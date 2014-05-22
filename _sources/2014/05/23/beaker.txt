@@ -5,10 +5,8 @@ Beaker Notebookを触ってみた
 
 The data scientist's laboratory `Beaker <http://beakernotebook.com/index.html>`_ を触ったみたので、メモ。
 
-これは何?
----------
-
-要するにWebベースのエディタですが、内部に Markdown や Latex、 Python や R などのコードを埋め込んで、
+Beaker NoteBook は、要するにWebベースのドキュメントツール/メモツールですが、
+内部に Markdown や Latex、 Python や R などのコードを埋め込んで、
 実行・視覚化することができます。
 
 また ブロック単位のロック等の機能もあります。

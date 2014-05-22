@@ -13,98 +13,18 @@
             <title><![CDATA[Beaker Notebookを触ってみた]]></title>
             <description><![CDATA[<h1>Beaker Notebookを触ってみた</h1>
 <p>The data scientist’s laboratory <a class="reference external" href="http://beakernotebook.com/index.html">Beaker</a> を触ったみたので、メモ。</p>
-<div class="section" id="id1">
-<h2>これは何?</h2>
-<p>要するにWebベースのエディタですが、内部に Markdown や Latex、 Python や R などのコードを埋め込んで、
+<p>Beaker NoteBook は、要するにWebベースのドキュメントツール/メモツールですが、
+内部に Markdown や Latex、 Python や R などのコードを埋め込んで、
 実行・視覚化することができます。</p>
 <p>また ブロック単位のロック等の機能もあります。
 Markdown と各種コードを混在できるので、ちょっとしたコード片を共有したりするのに便利そうですね。</p>
 <p>ちなみに編集対象のファイルはサーバー上のローカルファイルで、Json形式になっていて、
 ワンクリックで Gist に投稿できたりします。</p>
-<p class="readmorewrapper"><a class="readmore" href="http://blog.0-8.in/2014/05/23/beaker.html#more">続きを読む...</a></p></div>
-<div class="section" id="id2">
-<h2>インストール</h2>
-<p>github のプロジェクトページの通りにすれば基本的に動きます。</p>
-<p>Mac w/ brew の例ですと</p>
-<ol class="arabic simple">
-<li>Java (&gt;= 1.7) をインストール</li>
-<li>XCode をインストール</li>
-<li>Gradle NPM Nginx のインストール</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre>brew install gradle npm
-brew install nginx --with-debug
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
-<li>Python 関係のインストール(pip が入っている前提)</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre>pip install ipython pyzmq
-</pre></div>
-</div>
-<ol class="arabic simple" start="5">
-<li>その他、R や Latex など、必要なものをインストール</li>
-<li>github より beaker のソースコードを取得</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/twosigma/beaker-notebook.git
-</pre></div>
-</div>
-</div>
-<div class="section" id="id3">
-<h2>ビルドと起動</h2>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>beaker-notebook/core/config/builds/dev/
-gradle run
-</pre></div>
-</div>
-<p>これでサーバーが起動して、ブラウザも開きます。</p>
-<img alt="../../../_images/20140523.scr2.png" src="http://blog.0-8.in/_images/20140523.scr2.png"/>
-</div>
-<div class="section" id="id4">
-<h2>使ってみる</h2>
-<div class="section" id="id5">
-<h3>何はともあれ新規ファイル作成</h3>
-<p>New Notebook をクリックしてみましょう。</p>
-<img alt="../../../_images/20140523.scr3.png" src="http://blog.0-8.in/_images/20140523.scr3.png"/>
-<p>親近のノートが作られます。
-初期設定では、下図のようなデフォルトテンプレートが表示されるように成っています。</p>
-</div>
-<div class="section" id="cell">
-<h3>Cellを追加する</h3>
-<p>ノートブックは Cell と呼ばれるブロック集まってできていて、それは画面右側の縦線で表現されています。</p>
-<p>cell を追加するには、追加したい場所の直前の Cell の下側にポインタをあて、クリックします。
-すると、メニューが現れ、好きな種類の Cell を選ぶことができます。</p>
-<img alt="../../../_images/20140523.scr4.png" src="http://blog.0-8.in/_images/20140523.scr4.png"/>
-<img alt="../../../_images/20140523.scr5.png" src="http://blog.0-8.in/_images/20140523.scr5.png"/>
-</div>
-<div class="section" id="id6">
-<h3>書き込む</h3>
-<p>適当なCellを選択すれば、書き込むことができます。ちなみに、書き込みを Lock する機能もあります。</p>
-</div>
-<div class="section" id="id7">
-<h3>コードを実行する</h3>
-<p>実行したいコードのある Cell にカーソルを合わせ、<a href="#id8"><span class="problematic" id="id9">`</span></a>Shift + Enter ` で実行することができます。
-実行結果はあくまで評価値であって、標準出力ではないことに注意しましょう。</p>
-</div>
-<div class="section" id="id10">
-<h3>Cell を削除</h3>
-<p>該当 Cell の右端をクリックすると、 Delete cell を選ぶことができます。</p>
-<img alt="../../../_images/20140523.scr6.png" src="http://blog.0-8.in/_images/20140523.scr6.png"/>
-</div>
-</div>
-<div class="section" id="id11">
-<h2>困ったこと</h2>
-<p>単に触って間もないからですが、</p>
-<ol class="arabic simple">
-<li>Cell をすべて消したら、新規の cell の作りかたがわからなくなってしまいました。直前の Cell がないので。</li>
-<li>冒頭でもちょろっと書いたのですが、 Notebook &gt; Publish to web をクリックすると、Gistに公開されてしまってあせりました。</li>
-</ol>
-</div>
-<div class="section" id="id12">
-<h2>まとめ</h2>
-<p>良いところも沢山あるのですが、UIが若干直感的でない気がします。
-あと、データサイエンティストの実験室、というのであれば、データも含めて管理したいですよね。。。</p>
-<p>コードの共有は個人的には Gist で間に合ってしまっているし、
-使い勝手がこなれてくるまでは様子見かなぁ。</p>
-</div>
+<p class="readmorewrapper"><a class="readmore" href="http://blog.0-8.in/2014/05/23/beaker.html#more">続きを読む...</a></p> 
+ 
+ 
+ 
+ 
 ]]></description>
             <category><![CDATA[ lifestyle ]]></category>
              <pubDate>Fri, 23 May 2014 00:00:00 +0900</pubDate>
@@ -133,55 +53,10 @@ gradle run
             <title><![CDATA[Ad Engineering Summit 2014]]></title>
             <description><![CDATA[<h1>Ad Engineering Summit 2014</h1>
 <p><a class="reference external" href="http://a-e-s.jp">Ad Engineering Summit 2014</a> に参加してきました。</p>
-<div class="section" id="key-session">
-<h2>[Key Session] 世界で活躍するスペシャリストの豪華セッション!</h2>
-<p>まずはキーセッションを聞きました。ちょっとタイトルが適当すぎるように感じますが。。。</p>
-<p>登壇者は</p>
-<ul class="simple">
-<li>ジェイソン・モース</li>
-<li>マリオ・ピロ</li>
-<li>マーク・ヘール</li>
-<li>チハン・ユー</li>
-<li>菅原 健一(モデレータ)</li>
-</ul>
-<p>の5名です。セッション自体はAd業界全体的な質問に登壇者が答える形式で進行していきました。
-登壇者のほとんど US の方なので当然英語ですが、
-同時通訳があったので英語の苦手な自分でも内容を理解することができました。
-(翻訳済の日本語だと意味をとりづらい場面もあり、結局途中からは一生懸命英語を聞いていましたが。。。)</p>
-<p>このセッションで最も興味があったのは、フラグメンテーション。
-フラグメンテーションをどう取り扱うかについては、どの登壇者からもはっきりした回答が得られなかったように感じました。
-あと、デバイス間のユーザーひも付けはやっぱりまだまだ精度の問題があるとのことです。
-それは当然そうですよね。詳しくはないのですが、あとはその精度でも十分なような用途を探す感じになるのでしょうか?</p>
-<p class="readmorewrapper"><a class="readmore" href="http://blog.0-8.in/2014/05/16/aes.html#more">続きを読む...</a></p></div>
-<div class="section" id="id2">
-<h2>米国モバイル広告トレンドとスタートアップ</h2>
-<p>次に、WiL の琴さんのセッション。</p>
-<p>米国での広告のトレンドについて解説していただけました。
-Facebook のモバイル広告の伸び率は年間約200%, Twitter で約90%。
-Facebook のインストール広告がめちゃくちゃよかったから、
-Twitter や Google が追従しようとしている状況との事です。
-あと、動画広告も非常にのびています。</p>
-<p>ちなみに今いい感じのスタートアップは</p>
-<ul class="simple">
-<li><a class="reference external" href="http://www.buzzfeed.com">BuzzFeed</a> いわゆるバイラルメディア。</li>
-<li><a class="reference external" href="https://www.adstage.io">AdStage</a> 広告出稿を一元管理。UIがすばらしいみたいです。</li>
-<li><a class="reference external" href="http://www.drawbrid.ge">Drawbridge</a> クロスデバイスでユーザーのひも付け。</li>
-</ul>
-<p>などなど。</p>
-</div>
-<div class="section" id="id3">
-<h2>米国事例に学ぶ動画広告の可能性と日本の課題</h2>
-<p>歳後は <a class="reference external" href="http://adcolony.com">AdColony</a> のCEO、カッソイさんのセッション。
-しゃべりが上手でした。</p>
-<p>データの分析には AWS で Hadoop/Spark/Shark などを利用しているとのこと。ありがちですね。
-あと、競合と比べて動画の再生開始が非常に早いので、95%くらい、最後まで見てくれるという強みがあるそうです。
-画質もよいとのことで、技術的にどう実現しているのか、気になるところです。</p>
-<p>動画広告は、テレビの良さとネットの良さを併せ持っているので、動向に注視しないとダメそうです。</p>
-</div>
-<div class="section" id="id4">
-<h2>まとめ</h2>
-<p>現状のうざい広告は大嫌いなので、はやくいい感じになることを祈ります。</p>
-</div>
+<p class="readmorewrapper"><a class="readmore" href="http://blog.0-8.in/2014/05/16/aes.html#more">続きを読む...</a></p> 
+ 
+ 
+ 
 ]]></description>
             <category><![CDATA[ adtech ]]></category>
              <pubDate>Fri, 16 May 2014 00:00:00 +0900</pubDate>

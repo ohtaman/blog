@@ -97,98 +97,18 @@
         </div>
         <h1><a href="2014/05/23/beaker.html">Beaker Notebookを触ってみた</a></h1>
 <p>The data scientist’s laboratory <a class="reference external" href="http://beakernotebook.com/index.html">Beaker</a> を触ったみたので、メモ。</p>
-<div class="section" id="id1">
-<h2>これは何?</h2>
-<p>要するにWebベースのエディタですが、内部に Markdown や Latex、 Python や R などのコードを埋め込んで、
+<p>Beaker NoteBook は、要するにWebベースのドキュメントツール/メモツールですが、
+内部に Markdown や Latex、 Python や R などのコードを埋め込んで、
 実行・視覚化することができます。</p>
 <p>また ブロック単位のロック等の機能もあります。
 Markdown と各種コードを混在できるので、ちょっとしたコード片を共有したりするのに便利そうですね。</p>
 <p>ちなみに編集対象のファイルはサーバー上のローカルファイルで、Json形式になっていて、
 ワンクリックで Gist に投稿できたりします。</p>
-<p class="readmorewrapper"><a class="readmore" href="2014/05/23/beaker.html#more">続きを読む...</a></p></div>
-<div class="section" id="id2">
-<h2>インストール</h2>
-<p>github のプロジェクトページの通りにすれば基本的に動きます。</p>
-<p>Mac w/ brew の例ですと</p>
-<ol class="arabic simple">
-<li>Java (&gt;= 1.7) をインストール</li>
-<li>XCode をインストール</li>
-<li>Gradle NPM Nginx のインストール</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre>brew install gradle npm
-brew install nginx --with-debug
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
-<li>Python 関係のインストール(pip が入っている前提)</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre>pip install ipython pyzmq
-</pre></div>
-</div>
-<ol class="arabic simple" start="5">
-<li>その他、R や Latex など、必要なものをインストール</li>
-<li>github より beaker のソースコードを取得</li>
-</ol>
-<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/twosigma/beaker-notebook.git
-</pre></div>
-</div>
-</div>
-<div class="section" id="id3">
-<h2>ビルドと起動</h2>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>beaker-notebook/core/config/builds/dev/
-gradle run
-</pre></div>
-</div>
-<p>これでサーバーが起動して、ブラウザも開きます。</p>
-<img alt="../../../_images/20140523.scr2.png" src="_images/20140523.scr2.png"/>
-</div>
-<div class="section" id="id4">
-<h2>使ってみる</h2>
-<div class="section" id="id5">
-<h3>何はともあれ新規ファイル作成</h3>
-<p>New Notebook をクリックしてみましょう。</p>
-<img alt="../../../_images/20140523.scr3.png" src="_images/20140523.scr3.png"/>
-<p>親近のノートが作られます。
-初期設定では、下図のようなデフォルトテンプレートが表示されるように成っています。</p>
-</div>
-<div class="section" id="cell">
-<h3>Cellを追加する</h3>
-<p>ノートブックは Cell と呼ばれるブロック集まってできていて、それは画面右側の縦線で表現されています。</p>
-<p>cell を追加するには、追加したい場所の直前の Cell の下側にポインタをあて、クリックします。
-すると、メニューが現れ、好きな種類の Cell を選ぶことができます。</p>
-<img alt="../../../_images/20140523.scr4.png" src="_images/20140523.scr4.png"/>
-<img alt="../../../_images/20140523.scr5.png" src="_images/20140523.scr5.png"/>
-</div>
-<div class="section" id="id6">
-<h3>書き込む</h3>
-<p>適当なCellを選択すれば、書き込むことができます。ちなみに、書き込みを Lock する機能もあります。</p>
-</div>
-<div class="section" id="id7">
-<h3>コードを実行する</h3>
-<p>実行したいコードのある Cell にカーソルを合わせ、<a href="#id8"><span class="problematic" id="id9">`</span></a>Shift + Enter ` で実行することができます。
-実行結果はあくまで評価値であって、標準出力ではないことに注意しましょう。</p>
-</div>
-<div class="section" id="id10">
-<h3>Cell を削除</h3>
-<p>該当 Cell の右端をクリックすると、 Delete cell を選ぶことができます。</p>
-<img alt="../../../_images/20140523.scr6.png" src="_images/20140523.scr6.png"/>
-</div>
-</div>
-<div class="section" id="id11">
-<h2>困ったこと</h2>
-<p>単に触って間もないからですが、</p>
-<ol class="arabic simple">
-<li>Cell をすべて消したら、新規の cell の作りかたがわからなくなってしまいました。直前の Cell がないので。</li>
-<li>冒頭でもちょろっと書いたのですが、 Notebook &gt; Publish to web をクリックすると、Gistに公開されてしまってあせりました。</li>
-</ol>
-</div>
-<div class="section" id="id12">
-<h2>まとめ</h2>
-<p>良いところも沢山あるのですが、UIが若干直感的でない気がします。
-あと、データサイエンティストの実験室、というのであれば、データも含めて管理したいですよね。。。</p>
-<p>コードの共有は個人的には Gist で間に合ってしまっているし、
-使い勝手がこなれてくるまでは様子見かなぁ。</p>
-</div>
+<p class="readmorewrapper"><a class="readmore" href="2014/05/23/beaker.html#more">続きを読む...</a></p> 
+ 
+ 
+ 
+ 
 
         <div class="postmeta">
         <div class="author">
