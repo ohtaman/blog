@@ -28,7 +28,7 @@
         <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="_static/plugins.js"></script>
         <script src="_static/main.js"></script>
-        <link rel="prev" title="次の投稿" href="page4.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+        <link rel="next" title="前の投稿" href="page6.html" /><link rel="prev" title="次の投稿" href="page4.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.4.2',
@@ -91,8 +91,96 @@
               </ul>
           </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
             <li class="left"> &laquo; <a href="page4.html">次の投稿</a></li>
-            <li class="right"></li>
+            <li class="right"><a href="page6.html">前の投稿</a> &raquo; </li>
         </ul><div class="timestamp postmeta">
+            <span>1月 12, 2013</span>
+        </div>
+        <h1><a href="2013/01/12/multi.html">UNIXコマンドを並列化する</a></h1>
+<p>もう一年近く前、会社の方が “UNIXのテキスト処理関連のツールをマルチスレッド対応してほしい” とつぶやいていました。</p>
+<p>「マルチスレッドは面倒くさいけど、マルチプロセスなら簡単だよ!」ってことで、プチフレームワークを書いたのが去年の5月。</p>
+<p>それを最近になって思い出して、 <a class="reference external" href="https://github.com/ohtaman/multi">github</a> にあげたので紹介します。</p>
+<div class="section" id="id1">
+<h2>何をするもの?</h2>
+<p>テキスト処理をしていると、簡単なクレンジング処理などで
+行単位で並列化出来るような処理がたくさんあります。
+multi は標準入力を1行毎に区切って複数のプロセスに渡すことでテキスト処理の高速化を図るツールです。
+テキストを分割したりプロセス管理したりするので、重い処理をしない場合は遅くなることがあります。</p>
+</div>
+<div class="section" id="id2">
+<h2>サンプル</h2>
+<p>以下のコードでは行毎に hoge.txt を10個の mecab にかけています。</p>
+<div class="highlight-bash"><div class="highlight"><pre>cat hoge.txt | multi -m <span class="s2">"mecab"</span> -n 10
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>オプション</h2>
+<p>指定できるオプションは以下のとおり。</p>
+<div class="highlight-bash"><div class="highlight"><pre>usage: multi <span class="o">[</span>OPTIONS<span class="o">]</span>
+-c   combiner <span class="nb">command</span>
+-h   show this message
+-m   mapper <span class="nb">command</span> <span class="o">(</span>required<span class="o">)</span>
+-n   number of mappers <span class="o">(</span>required<span class="o">)</span>
+-s   splitter <span class="nb">command</span>
+-S   use internal splitter/combiner which preserve the order of the input sequence
+</pre></div>
+</div>
+<p>まず、言葉の定義ですが、標準入力を1行毎に区切る部分を splitter、
+それを受け取って具体的な処理をする部分を mapper、
+処理結果を一つにまとめて出力する部分を combiner と呼ぶことにしました。
+それぞれ、 -s、 -m、 -c でコマンドを指定することができます。</p>
+<p>splitter と combiner は必須オプションではなく、
+省略すると行ごとに区切って、空いている mapper にわたし、
+mapper の出力を早いもの順で結合して出力します。
+combiner にコマンドを指定する場合は、 入力ファイル名に対応する部分に {} を書きます。
+例えば</p>
+<div class="highlight-bash"><div class="highlight"><pre>cat hoge.txt | multi -m <span class="s2">"sort"</span> -c <span class="s2">"sort -m {}"</span>
+</pre></div>
+</div>
+<p>とすると {} の部分が mapper(-m “sort” の部分) の標準出力のリストに置換されます。</p>
+<p>また、行の順序を保ちたい場合には -S オプションを利用します。この場合、 splitter や combiner は指定できません。</p>
+</div>
+<div class="section" id="id4">
+<h2>インストール</h2>
+<p>インストール手順は以下のとおりです。</p>
+<ol class="arabic simple">
+<li>github よりダウンロード</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/ohtaman/multi.git multi
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>configure &amp; make</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>multi
+./configure
+make
+sudo make install
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+
+        <div class="postmeta">
+        <div class="author">
+            <span>投稿者 ohtaman</span>
+        </div>
+        <div class="categories">
+            <span>
+                カテゴリー:
+                <a href="categories/programming.html">programming</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                タグ:
+                <a href="tags/programming.html">programming</a>, <a href="tags/command.html">command</a>, <a href="tags/linux.html">linux</a></span>
+        </div>
+        <div class="comments">
+            <a href="http://blog.0-8.in/2013/01/12/multi.html#disqus_thread" data-disqus-identifier="2013/01/12/multi">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>1月 03, 2013</span>
         </div>
         <h1><a href="2013/01/03/new_year.html">新年明けましておめでとうございます。</a></h1>
@@ -131,30 +219,11 @@
         </div>
         <div class="comments">
             <a href="http://blog.0-8.in/2013/01/03/new_year.html#disqus_thread" data-disqus-identifier="2013/01/03/new_year">Leave a comment</a>
-        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
-            <span>12月 28, 2012</span>
-        </div>
-        <h1><a href="2012/12/28/first_post.html">引っ越してきました</a></h1>
-<p>引っ越してきました。
-今後ともよろしくお願いします。</p>
-
-        <div class="postmeta">
-        <div class="author">
-            <span>投稿者 ohtaman</span>
-        </div>
-        <div class="categories">
-            <span>
-                カテゴリー:
-                <a href="categories/others.html">others</a></span>
-        </div>
-        
-        <div class="comments">
-            <a href="http://blog.0-8.in/2012/12/28/first_post.html#disqus_thread" data-disqus-identifier="2012/12/28/first_post">Leave a comment</a>
         </div></div><div class="archive_link">
         <a href="archive.html"> &mdash; ブログアーカイブ &mdash; </a>
     </div><ul class="related clearfix">
             <li class="left"> &laquo; <a href="page4.html">次の投稿</a></li>
-            <li class="right"></li>
+            <li class="right"><a href="page6.html">前の投稿</a> &raquo; </li>
         </ul></article><aside class="sidebar"><section><div class="widget">
   <h1>プロフィール</h1>
   <div>
@@ -171,6 +240,8 @@
 </div></section><section><div class="widget">
     <h1>最近の投稿</h1>
     <ul><li>
+            <a href="2014/05/23/beaker.html">Beaker Notebookを触ってみた</a>
+        </li><li>
             <a href="2014/05/18/gyoza.html">宇都宮で餃子をたくさん食べました</a>
         </li><li>
             <a href="2014/05/16/aes.html">Ad Engineering Summit 2014</a>
@@ -188,15 +259,13 @@
             <a href="2013/01/12/multi.html">UNIXコマンドを並列化する</a>
         </li><li>
             <a href="2013/01/03/new_year.html">新年明けましておめでとうございます。</a>
-        </li><li>
-            <a href="2012/12/28/first_post.html">引っ越してきました</a>
         </li></ul>
 </div>
 </section><section><div class="widget">
     <h1>カテゴリー</h1>
     <ul><li><a href="categories/adtech.html">adtech</a> (1)</li><li><a href="categories/computer_science.html">computer science</a> (1)</li><li><a href="categories/lifestyle.html">lifestyle</a> (5)</li><li><a href="categories/others.html">others</a> (2)</li><li><a href="categories/programming.html">programming</a> (1)</li></ul>
 </div></section><section><div class="widget">
-    <h1>タグ</h1><a href="tags/adtech.html">adtech</a> (1), <a href="tags/business.html">business</a> (2), <a href="tags/career.html">career</a> (3), <a href="tags/command.html">command</a> (2), <a href="tags/dmm.html">dmm</a> (1), <a href="tags/english.html">english</a> (1), <a href="tags/event.html">event</a> (6), <a href="tags/food.html">food</a> (1), <a href="tags/kindle.html">kindle</a> (1), <a href="tags/linux.html">linux</a> (1), <a href="tags/mac.html">mac</a> (1), <a href="tags/nature.html">nature</a> (2), <a href="tags/programming.html">programming</a> (3)</div></section><section><div class="widget">
+    <h1>タグ</h1><a href="tags/adtech.html">adtech</a> (1), <a href="tags/business.html">business</a> (2), <a href="tags/career.html">career</a> (3), <a href="tags/command.html">command</a> (2), <a href="tags/computer_science.html">computer science</a> (1), <a href="tags/dmm.html">dmm</a> (1), <a href="tags/english.html">english</a> (1), <a href="tags/event.html">event</a> (6), <a href="tags/food.html">food</a> (1), <a href="tags/kindle.html">kindle</a> (1), <a href="tags/linux.html">linux</a> (1), <a href="tags/mac.html">mac</a> (1), <a href="tags/nature.html">nature</a> (2), <a href="tags/programming.html">programming</a> (3)</div></section><section><div class="widget">
 <h1>つぶやき</h1>
 <a class="twitter-timeline" href="https://twitter.com/ohtaman" data-widget-id="468056150659715074">@ohtaman からのツイート</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
