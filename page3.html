@@ -109,25 +109,7 @@
 それ以外については、よく差別化ポイントがわかりません。
 正直言ってどこでも良かったのですが、
 今回は無料枠があってネタとしても利用できそうな DMM にしてみました。</p>
-<div class="section" id="id4">
-<h2>感想</h2>
-<p>実際に使ってみた感想は...</p>
-<blockquote>
-<div><ul class="simple">
-<li>Skype のビデオ通話を利用すします。
-相手の表情を確かめながら会話ができるので(部屋が汚いので焦りましたが)良かったです。</li>
-<li>発音はとても聞き取りやすく(先生による?)、
-難しい表現のフォローなどもとても丁寧にしていただき、
-オンライン英会話に対する心理的なハードルがかなり下がった気がします。</li>
-<li>「日本語でサポート可能」な先生を選んだので、分からないときはさらっと日本語で質問できるのも何気に良かったです。</li>
-<li>レッスン終了後に DMM のページを見てみると、その日に使った単語のリストがずらり。すごい。</li>
-<li>受講前は25分というのは短すぎるのではないかと思っていましたが、マンツーマンなので結構しゃべれます。</li>
-<li>どの会社も Skype なんですよね。今の時代 Line を活用するサービスが出てきても良さそう。グループレッスンもできるし。</li>
-<li>新規の予約を入れられるのは、既存の予約済レッスンを消化した次の日から。お気に入りの先生を捕まえるのには苦労しそう。</li>
-</ul>
-</div></blockquote>
-<p>とにかく、いい感じだったので暫く続けてみます。週に2-3回はやりたいな。</p>
-</div>
+<p class="readmorewrapper"><a class="readmore" href="2014/05/05/dmm_english.html#more">続きを読む...</a></p> 
 
         <div class="postmeta">
         <div class="author">
@@ -157,153 +139,10 @@ Amazon.com のアカウントを取得し、 Amazon.co.jp のアカウントと�
 今回ちょっと Mac 上で Kindle を読みたい状況になったので、
 Mac 上で Kindle 本を読む方法を調べました。</p>
 <p>ちなみに、ここでは Mac を前提としていますが、おそらく Windows でも同様の方法で読むことができます。</p>
-<div class="section" id="id1">
-<h2>要するに</h2>
-<p>仮想マシン上で Android を起動し、その中で Kindle for Android を起動します。
-Android の起動には、今回は <a class="reference external" href="http://www.genymotion.com">Genymotion</a> を利用しました。</p>
-</div>
-<div class="section" id="blog">
-<h2>参考blog</h2>
-<p>以下の2つのブログを参考にさせていただきました。</p>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://www.workabroad.jp/posts/2037">Shunsuke Sawada WORKBROAD</a></li>
-<li><a class="reference external" href="http://blog.yohei.org/android-genymotion2-x-install-googleplay">Yohei Blog</a></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id2">
-<h2>手順</h2>
-<div class="section" id="id3">
-<h3>Genymotionをインストールする</h3>
-<p>Genymotion をインストールする前に <cite>VirtualBox &lt;https://www.virtualbox.org/&gt;</cite> をインストールします。
-もし既にインストール済の場合は、スキップしていただいてかまいません。</p>
-<ol class="arabic simple">
-<li>VirutalBox をダウンロードする</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a> に最新のバイナリがありますので、
-このページから for OS X hosts をダウンロードします。</li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>VirtualBox をインストールする</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>ウィザードに従い、普通にインストールします。</li>
-</ul>
-</div></blockquote>
-<p>次に、Genymotion をインストールします。</p>
-<ol class="arabic simple" start="3">
-<li><a class="reference external" href="http://www.genymotion.com">公式サイト</a> からGenymotion (Free版) をダウンロードする</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>ダウンロードにはユーザー登録が必要です。</li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li>Genymotio をインストールする</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>ウィザードに従い、普通にインストールします。</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="id5">
-<h3>Genymotion にアンドロイド端末を追加する</h3>
-<p>Genymotion のウィザードに従って端末を追加します。</p>
-<ol class="arabic simple">
-<li>Genymotion を起動する</li>
-<li>Add をクリックして、端末を追加する</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>適当な端末を選択し、数回 Next を押せば O.K. です。</li>
-<li>ちなみに私は “Custom Tablet 10’’ -4.3 - API 18 - 1280x800” を選択しました。</li>
-</ul>
-</div></blockquote>
-<p>ここで起動したいところですが、
-実は VirtualBox のネットワークの設定が必要です。</p>
-<ol class="arabic simple">
-<li>VirtualBox を起動する</li>
-<li>新規のネットワークを追加する</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>メニュー &gt; VirtualBox &gt; 環境設定 &gt; ネットワーク &gt; ホストオンリーネットワーク(H)</li>
-<li>“+”ボタンをクリックして、vboxnet1 を追加</li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>DHCPサーバーを有効化する</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>vboxnet1 を選択して、設定ボタンをクリック &gt; DHCP サーバー</li>
-<li>サーバーを有効化をチェック</li>
-<li>ネットワークを適当に設定。ちなみに私の設定は</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>サーバーアドレス: 192.168.56.1</li>
-<li>サーバーマスク: 255.255.255.0</li>
-<li>アドレス下限: 192.168.56.101</li>
-<li>アドレス上限: 192.168.56.254</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li>Android 端末のネットワーク設定を変更する</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>VirtualBox で、今回生成された Android 端末に対応するイメージを選択</li>
-<li>アダプター1を vboxnet1 にひもづける<ul>
-<li>割り当て: ホストオンリーアダプター</li>
-<li>名前: vboxnet1</li>
-</ul>
-</li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="5">
-<li>Genymotion から Android 端末を起動する</li>
-</ol>
-</div>
-<div class="section" id="google-apps">
-<h3>Google Apps を追加する</h3>
-<p>以下の 2 つのファイルが必要です。</p>
-<ol class="arabic simple">
-<li>GApps</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://goo.im/gapps">http://goo.im/gapps</a></li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>ARM Translation Installer</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="https://docs.google.com/file/d/0B2oUUnig1zCOV01tSnRwNUpGdzQ/edit">https://docs.google.com/file/d/0B2oUUnig1zCOV01tSnRwNUpGdzQ/edit</a></li>
-</ul>
-</div></blockquote>
-<p>Genymotion内でランチャーを起動し、そこに D&amp;D することで Android 端末にインストールすることがでます。</p>
-</div>
-<div class="section" id="kindle-for-android">
-<h3>Kindle for Android をインストールする</h3>
-<p>Google Play Store が利用可能なので、
-Kindle を検索してインストールすれば O.K. です。</p>
-</div>
-</div>
-<div class="section" id="id6">
-<h2>まとめ</h2>
-<p>Mac 上で Amazon.co.jp の Kindle 本を読む方法をまとめました。</p>
-</div>
+<p class="readmorewrapper"><a class="readmore" href="2014/05/05/kindle_mac.html#more">続きを読む...</a></p> 
+ 
+ 
+ 
 
         <div class="postmeta">
         <div class="author">
