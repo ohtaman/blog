@@ -91,7 +91,7 @@ cell を追加するには、追加したい場所の直前の Cell の下側に
 コードを実行する
 ^^^^^^^^^^^^^^^^
 
-実行したいコードのある Cell にカーソルを合わせ、`Shift + Enter ` で実行することができます。
+実行したいコードのある Cell にカーソルを合わせ、 Shift + Enter で実行することができます。
 実行結果はあくまで評価値であって、標準出力ではないことに注意しましょう。
 
 Cell を削除
@@ -123,5 +123,5 @@ Cell を削除
 
 .. author:: default
 .. categories:: lifestyle
-.. tags:: business, programming,
+.. tags:: business,programming
 .. comments::
