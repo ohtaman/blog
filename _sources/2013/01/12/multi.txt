@@ -83,6 +83,6 @@ combiner にコマンドを指定する場合は、 入力ファイル名に対�
 
 
 .. author:: default
-.. categories:: programming
+.. categories:: computer science
 .. tags:: programming, command, linux
 .. comments::
