@@ -1,0 +1,250 @@
+Hadoop コードリーディング 第16回 に参加してきました。
+===============================================
+
+先週(2014-05-29)、
+`Hadoopソースコードリーディング 第16回 <https://www.eventbrite.com/e/hadoop-16-tickets-11502362877>`_
+に参加してきましたので、その時のメモをば。
+
+.. more::
+
+
+
+講演者
+-----
+
+講演者は以下のお三方
+
+* 土橋さん (NTTデータ)
+* 猿田さん (NTTデータ)
+* @taroleo (Treger Data)
+
+前段
+----
+
+Spark 1.0 が遅れている。。。。本当はここでリリースを祝いたかった。
+
+
+Apache Sparkの紹介 (土橋さん)
+---------------------------
+
+Spark誕生の背景
+^^^^^^^^^^^^^^
+
+Hadoopだと
+
+* 毎回HDFSに書き込む
+* exportも大変
+* インタラクティブなドリルダウン分析に使えない
+
+そこで、
+
+* Spark 大規模データの分散処理を御メモリで実現する
+  - RDDの論文が元になっている
+
+Sparkの得意なところ
+^^^^^^^^^^^^^^^^^
+
+* 大量データを次々に変換する処理が得意
+* Hadoopによるデータ加工後のドリルダウン分析
+* サンプリングが有効ではないロングテールのデータ分析
+* TB級まで。Hadoop程ではないデータ量が得意
+
+インメモリ並列処理基盤
+
+* Hadoopを含むエコシステムを構築できる
+
+  - Hadoopを置き換えてしまえ、という議論は少ない
+  - Spark/Storm/Hadoop/PostgreSQL
+
+    1. Postgre:アカウント情報
+    2. Hadoop: データクレンジング
+    3. Spark: 行動履歴の分析、インタラクティブなデータ処理
+
+Spark Summit 2013 振り返り
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* 2013/12/2-3 に実施された
+* 特に感じた流れ
+
+  * Sparkの上で全部やれるようにします
+  * Hadoopとは共存します
+
+* Hadoopコミュニュティとの連携が活発
+* Yahoo! の事例が印象的だった
+
+  - Yahoo! 台湾でのパーソナライズで利用されている(Hadoopからの置き換え)
+  - 数名で2-3ヶ月でマイグレーション完了
+  - ETLはHadoop -> スループット重視
+  - 分析部分はSpark -> レスポンス重視
+
+* 実はSpark単体で動かす人たちが多いらしい
+* UCBerkley が開発の出処なので、(学生が多いため)コミット量が多い
+* CONVIVA (ビデオは威信の効率化/エンゲージ率の向上)の事例
+  - SparkとSparkストリーミングを利用
+  - CDNスイッチの最適化
+  - Adaptive Bit Rateの調整
+  - 良かった点
+
+    - 分析の高速化ビットレート工場
+    - プログラミングモデルが適していた。機会学驟雨
+
+  - 苦労した点
+
+    - 故障対処と運用
+    - Spark基盤独自の知識が必要
+    - デバッグが大変
+
+* Sparkエコシステム
+  - Shark は Hiveと互換性を保ちながら発展中
+  - Shark自体はパーサをHiveをつかっているが、SparkSQLが動くようにしたいと考えているようだ。
+
+Sparkの技術トピック(猿田さん)
+--------------------------
+
+Sparkでの典型的な処理のイメージ
+RDDの概要
+クラスタ上での処理、ノード間の通信イメージ
+RDDの変換チェインがクラスタ上で実行可能な処理に分割されるまでの流れ
+
+
+Sparkでは、RDD (Resilient Distributed Datasets) と呼ばれる中小データセットの変換を繰り返して結果を得る。
+また、この一連の処理をジョブと呼ぶ。
+
+RDD とは?
+^^^^^^^^
+
+* RDDの系譜に従って処理を実施する
+* コレクションのようなデータ構造。
+* 内部の要素をイテレートできる。
+
+* パーティションに分割され、サーバー上で分散は位置される
+* インメモリで処理する
+* immutableである
+
+変換関数とアクション
+^^^^^^^^^^^^^^^^^
+
+* 変換関数
+
+  - その時点では計算がスケジューリングされない
+
+* アクション
+
+  - 計算がその場でスケジューリングされる
+
+
+
+フォールトトレラント性
+^^^^^^^^^^^^^^^^^^^
+
+得たいデータが失われていたら、前のデータから生成することで、
+フォールトトレラント性を担保している。
+そのためには、「RDDがimmutableであること」が重要。
+また、 RDD間の依存関係には、以下の2種類が存在することも意識する必要がある。
+
+* 狭い依存関係 (Narrow Dependency)
+
+  * 親パーティションが単一の子パーティションの生成に関わっている依存関係
+
+* 広い依存関係 (Wide Dependency)
+
+  * 親パーティションが、複数の子パーティションの生成に関わっている依存関係
+
+
+Spark用語解説
+^^^^^^^^^^^^
+
+* ノード関連
+
+  * クライアント: ジョブのキックを担当
+  * マスタ: クラスタ全体のリソース管理を担当
+  * ワーカ: 計算資源の提供/管理を担当
+
+* ノード以外の主要な要素
+  * ドライバ: RDDの変換を記述したプログラム
+  * エグゼキューター: ワーカー上で動作し、実際の計算しょりを担当
+  * タスク: エグゼキュータが処理可能な粒度に分解した処理単位
+  * スケジューラ: タスクのエグゼキュータへの割当
+
+
+Sparkの処理フロー
+^^^^^^^^^^^^^^^
+
+1. 系譜をステージに分割する
+2. ステージの実行要否を判定する
+
+   * 計算済のRDDは共有することができる(キャッシュ)
+
+3. タスクを生成する
+
+   * ステージ内の最後のRDDのパーティションから、親RDDの方向に一位にたどれる範囲が1タスク
+
+4. タスクを実行する場所を決定する
+
+  * プリファードロケーションが定義されている場合は、それをヒントにする。定義されていない場合は、親をたどってヒントにする。
+  * プリファードローケーションはRDDの種類ごとに定義されている。
+
+5. タスクの実行順序をスケジューリングする
+
+  * ステージを構成するタスク群は「タスクセット」としてTaskSchedulerに渡される
+  * タスクセット単位でスケジューリングを行う
+    * FIFO
+    * FAIR
+
+
+Scala internals (@taroleoさん)
+------------------------------
+
+SlideShare で資料を公開されているので、本当にメモ書きのみです。
+
+.. raw:: html
+
+   <iframe src="http://www.slideshare.net/slideshow/embed_code/35251889" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/taroleo/spark-internal-hadoop-source-code-reading-16-in-japan" title="Spark Internals - Hadoop Source Code Reading #16 in Japan" target="_blank">Spark Internals - Hadoop Source Code Reading #16 in Japan</a> </strong> from <strong><a href="http://www.slideshare.net/taroleo" target="_blank">Taro L. Saito</a></strong> </div>
+
+
+Sparkのコード量
+
+* 2012 verion 0.6.x
+  * 20,000 lines
+
+* 2014
+  * 50,000 lines
+
+Spark は100名以上のコントリビュータがいるが、中心でコードを書いているのは4人。少数精鋭。
+
+Spark 入門
+^^^^^^^^^^
+
+* Scala には IntelliJ がよい
+* Scala Basics で 15分で始められる
+  * http://xerial.org/scala-cookbook
+
+Spark internals
+^^^^^^^^^^^^^^^
+
+* Mesos Scheduler - FineGrained
+
+  * Launches JVM for each task
+
+    * 毎回立ち上げて実行するので、遅い
+
+* CoarseGrainedExecutorBackend
+
+  * Launches Spark executor on Mesos slave
+
+    * 常にSparkが生きているので、Mesosのリソースを常に消費する
+
+*Mesos と Spark の連携はうまくいっていない。*
+
+* Omega ならできる。最近は YARN と仲良くなっている。
+
+まとめ
+-----
+
+Hadoop ソースコードリーディング、初めての参加でしたが、非常に内容が濃く、大満足です!
+次回も絶対参加します!
+
+.. author:: default
+.. categories:: computer science
+.. tags:: hadoop,spark,programming,linux
+.. comments::

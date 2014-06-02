@@ -1,0 +1,433 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="My blog">
+        <meta name="viewport" content="width=device-width">
+        <title>Hadoop コードリーディング 第16回 に参加してきました。 &mdash; 子曰く、</title>
+            <link rel="stylesheet" href="../../../_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/modern5.css" type="text/css">
+            <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../_static/font-awesome.min.css" type="text/css">
+        <link rel="shortcut icon" href="../../../_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../_static/plugins.js"></script>
+        <script src="../../../_static/main.js"></script>
+        <link rel="next" title="Beaker Notebookを触ってみた" href="../../05/23/beaker.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.4.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../_static/underscore.js"></script><script type="text/javascript" src="../../../_static/doctools.js"></script><script type="text/javascript" src="../../../_static/translations.js"></script><script type="text/javascript" src="../../../_static/disqus.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38190090-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Adjusts document height if sidebar is taller
+            var documentwrapper = document.getElementsByTagName("article")[0];
+            var sidebar = document.getElementsByClassName("sidebar")[0];
+
+            if (sidebar.offsetHeight > documentwrapper.offsetHeight)
+            {
+                var mainwrapper = document.getElementsByClassName("main")[0];
+                documentwrapper.style.minHeight = mainwrapper.offsetHeight + "px";
+            }
+
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script>
+</head>
+    <body role="document">
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header role="banner">
+            <hgroup>
+              <h1><a href="../../../index.html">子曰く、</a></h1><h2>「もえもえきゅん♡」</h2></hgroup>
+          </header>
+      <nav role="navigation">
+            <ul><li class="quicklink"><div class="rss">
+        <a href="../../../rss.html" title="Subscribe via RSS"><span class="fa fa-lg fa-rss"></span></a>
+    </div></li><li class="main-nav">
+                  <a href="../../../index.html">ホーム</a>
+                </li>
+              </ul>
+          </nav><div class="main-container" role="main"><div class="main wrapper clearfix"><article role="article"><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../../05/23/beaker.html">Beaker Notebookを触ってみた</a> &raquo; </li>
+        </ul><div class="timestamp postmeta">
+            <span>6月 02, 2014</span>
+        </div>
+    <div class="section" id="hadoop-16">
+<h1>Hadoop コードリーディング 第16回 に参加してきました。</h1>
+<p>先週(2014-05-29)、
+<a class="reference external" href="https://www.eventbrite.com/e/hadoop-16-tickets-11502362877">Hadoopソースコードリーディング 第16回</a>
+に参加してきましたので、その時のメモをば。</p>
+<div id="more"> </div><div class="section" id="id2">
+<h2>講演者</h2>
+<p>講演者は以下のお三方</p>
+<ul class="simple">
+<li>土橋さん (NTTデータ)</li>
+<li>猿田さん (NTTデータ)</li>
+<li>&#64;taroleo (Treger Data)</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>前段</h2>
+<p>Spark 1.0 が遅れている。。。。本当はここでリリースを祝いたかった。</p>
+</div>
+<div class="section" id="apache-spark">
+<h2>Apache Sparkの紹介 (土橋さん)</h2>
+<div class="section" id="spark">
+<h3>Spark誕生の背景</h3>
+<p>Hadoopだと</p>
+<ul class="simple">
+<li>毎回HDFSに書き込む</li>
+<li>exportも大変</li>
+<li>インタラクティブなドリルダウン分析に使えない</li>
+</ul>
+<p>そこで、</p>
+<ul class="simple">
+<li>Spark 大規模データの分散処理を御メモリで実現する
+- RDDの論文が元になっている</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>Sparkの得意なところ</h3>
+<ul class="simple">
+<li>大量データを次々に変換する処理が得意</li>
+<li>Hadoopによるデータ加工後のドリルダウン分析</li>
+<li>サンプリングが有効ではないロングテールのデータ分析</li>
+<li>TB級まで。Hadoop程ではないデータ量が得意</li>
+</ul>
+<p>インメモリ並列処理基盤</p>
+<ul class="simple">
+<li>Hadoopを含むエコシステムを構築できる<ul>
+<li>Hadoopを置き換えてしまえ、という議論は少ない</li>
+<li>Spark/Storm/Hadoop/PostgreSQL<ol class="arabic">
+<li>Postgre:アカウント情報</li>
+<li>Hadoop: データクレンジング</li>
+<li>Spark: 行動履歴の分析、インタラクティブなデータ処理</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="spark-summit-2013">
+<h3>Spark Summit 2013 振り返り</h3>
+<ul>
+<li><p class="first">2013/12/2-3 に実施された</p>
+</li>
+<li><p class="first">特に感じた流れ</p>
+<ul class="simple">
+<li>Sparkの上で全部やれるようにします</li>
+<li>Hadoopとは共存します</li>
+</ul>
+</li>
+<li><p class="first">Hadoopコミュニュティとの連携が活発</p>
+</li>
+<li><p class="first">Yahoo! の事例が印象的だった</p>
+<ul class="simple">
+<li>Yahoo! 台湾でのパーソナライズで利用されている(Hadoopからの置き換え)</li>
+<li>数名で2-3ヶ月でマイグレーション完了</li>
+<li>ETLはHadoop -&gt; スループット重視</li>
+<li>分析部分はSpark -&gt; レスポンス重視</li>
+</ul>
+</li>
+<li><p class="first">実はSpark単体で動かす人たちが多いらしい</p>
+</li>
+<li><p class="first">UCBerkley が開発の出処なので、(学生が多いため)コミット量が多い</p>
+</li>
+<li><p class="first">CONVIVA (ビデオは威信の効率化/エンゲージ率の向上)の事例
+- SparkとSparkストリーミングを利用
+- CDNスイッチの最適化
+- Adaptive Bit Rateの調整
+- 良かった点</p>
+<blockquote>
+<div><ul class="simple">
+<li>分析の高速化ビットレート工場</li>
+<li>プログラミングモデルが適していた。機会学驟雨</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>苦労した点<ul>
+<li>故障対処と運用</li>
+<li>Spark基盤独自の知識が必要</li>
+<li>デバッグが大変</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p class="first">Sparkエコシステム
+- Shark は Hiveと互換性を保ちながら発展中
+- Shark自体はパーサをHiveをつかっているが、SparkSQLが動くようにしたいと考えているようだ。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Sparkの技術トピック(猿田さん)</h2>
+<p>Sparkでの典型的な処理のイメージ
+RDDの概要
+クラスタ上での処理、ノード間の通信イメージ
+RDDの変換チェインがクラスタ上で実行可能な処理に分割されるまでの流れ</p>
+<p>Sparkでは、RDD (Resilient Distributed Datasets) と呼ばれる中小データセットの変換を繰り返して結果を得る。
+また、この一連の処理をジョブと呼ぶ。</p>
+<div class="section" id="rdd">
+<h3>RDD とは?</h3>
+<ul class="simple">
+<li>RDDの系譜に従って処理を実施する</li>
+<li>コレクションのようなデータ構造。</li>
+<li>内部の要素をイテレートできる。</li>
+<li>パーティションに分割され、サーバー上で分散は位置される</li>
+<li>インメモリで処理する</li>
+<li>immutableである</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>変換関数とアクション</h3>
+<ul class="simple">
+<li>変換関数<ul>
+<li>その時点では計算がスケジューリングされない</li>
+</ul>
+</li>
+<li>アクション<ul>
+<li>計算がその場でスケジューリングされる</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>フォールトトレラント性</h3>
+<p>得たいデータが失われていたら、前のデータから生成することで、
+フォールトトレラント性を担保している。
+そのためには、「RDDがimmutableであること」が重要。
+また、 RDD間の依存関係には、以下の2種類が存在することも意識する必要がある。</p>
+<ul class="simple">
+<li>狭い依存関係 (Narrow Dependency)<ul>
+<li>親パーティションが単一の子パーティションの生成に関わっている依存関係</li>
+</ul>
+</li>
+<li>広い依存関係 (Wide Dependency)<ul>
+<li>親パーティションが、複数の子パーティションの生成に関わっている依存関係</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>Spark用語解説</h3>
+<ul class="simple">
+<li>ノード関連<ul>
+<li>クライアント: ジョブのキックを担当</li>
+<li>マスタ: クラスタ全体のリソース管理を担当</li>
+<li>ワーカ: 計算資源の提供/管理を担当</li>
+</ul>
+</li>
+<li>ノード以外の主要な要素
+* ドライバ: RDDの変換を記述したプログラム
+* エグゼキューター: ワーカー上で動作し、実際の計算しょりを担当
+* タスク: エグゼキュータが処理可能な粒度に分解した処理単位
+* スケジューラ: タスクのエグゼキュータへの割当</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>Sparkの処理フロー</h3>
+<ol class="arabic simple">
+<li>系譜をステージに分割する</li>
+<li>ステージの実行要否を判定する<ul>
+<li>計算済のRDDは共有することができる(キャッシュ)</li>
+</ul>
+</li>
+<li>タスクを生成する<ul>
+<li>ステージ内の最後のRDDのパーティションから、親RDDの方向に一位にたどれる範囲が1タスク</li>
+</ul>
+</li>
+<li>タスクを実行する場所を決定する</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>プリファードロケーションが定義されている場合は、それをヒントにする。定義されていない場合は、親をたどってヒントにする。</li>
+<li>プリファードローケーションはRDDの種類ごとに定義されている。</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>タスクの実行順序をスケジューリングする</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>ステージを構成するタスク群は「タスクセット」としてTaskSchedulerに渡される</li>
+<li>タスクセット単位でスケジューリングを行う
+* FIFO
+* FAIR</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="scala-internals-taroleo">
+<h2>Scala internals (&#64;taroleoさん)</h2>
+<p>SlideShare で資料を公開されているので、本当にメモ書きのみです。</p>
+<iframe src="http://www.slideshare.net/slideshow/embed_code/35251889" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/taroleo/spark-internal-hadoop-source-code-reading-16-in-japan" title="Spark Internals - Hadoop Source Code Reading #16 in Japan" target="_blank">Spark Internals - Hadoop Source Code Reading #16 in Japan</a> </strong> from <strong><a href="http://www.slideshare.net/taroleo" target="_blank">Taro L. Saito</a></strong> </div><p>Sparkのコード量</p>
+<ul class="simple">
+<li>2012 verion 0.6.x
+* 20,000 lines</li>
+<li>2014
+* 50,000 lines</li>
+</ul>
+<p>Spark は100名以上のコントリビュータがいるが、中心でコードを書いているのは4人。少数精鋭。</p>
+<div class="section" id="id10">
+<h3>Spark 入門</h3>
+<ul class="simple">
+<li>Scala には IntelliJ がよい</li>
+<li>Scala Basics で 15分で始められる
+* <a class="reference external" href="http://xerial.org/scala-cookbook">http://xerial.org/scala-cookbook</a></li>
+</ul>
+</div>
+<div class="section" id="spark-internals">
+<h3>Spark internals</h3>
+<ul class="simple">
+<li>Mesos Scheduler - FineGrained<ul>
+<li>Launches JVM for each task<ul>
+<li>毎回立ち上げて実行するので、遅い</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CoarseGrainedExecutorBackend<ul>
+<li>Launches Spark executor on Mesos slave<ul>
+<li>常にSparkが生きているので、Mesosのリソースを常に消費する</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>Mesos と Spark の連携はうまくいっていない。</em></p>
+<ul class="simple">
+<li>Omega ならできる。最近は YARN と仲良くなっている。</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>まとめ</h2>
+<p>Hadoop ソースコードリーディング、初めての参加でしたが、非常に内容が濃く、大満足です!
+次回も絶対参加します!</p>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>投稿者 ohtaman</span>
+        </div>
+        <div class="categories">
+            <span>
+                カテゴリー:
+                <a href="../../../categories/computer_science.html">computer science</a></span>
+        </div>
+        <div class="tags">
+            <span>
+                タグ:
+                <a href="../../../tags/hadoop.html">hadoop</a>, <a href="../../../tags/spark.html">spark</a>, <a href="../../../tags/programming.html">programming</a>, <a href="../../../tags/linux.html">linux</a></span>
+        </div>
+        </div>
+    <div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "blog-ohtaman";    var disqus_identifier = "2014/06/02/hadoop";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../../05/23/beaker.html">Beaker Notebookを触ってみた</a> &raquo; </li>
+        </ul></article><aside class="sidebar"><section><div class="widget">
+  <h1>プロフィール</h1>
+  <div>
+    <img src="https://secure.gravatar.com/avatar/cbfbb036fc565dc1cecf48da3fe0e66e" />
+  </div>
+  <h3><a href="https://ja.gravatar.com/ohtaman">おおたまん</a></h3>
+  しがないエンジニア。
+</div></section><section><div class="widget" id="searchbox" role="search">
+    <h1>Search</h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="fa fa-search"></span></button>
+    </form>
+</div></section><section><div class="widget">
+    <h1>最近の投稿</h1>
+    <ul><li>
+            <a href="#">Hadoop コードリーディング 第16回 に参加してきました。</a>
+        </li><li>
+            <a href="../../05/23/beaker.html">Beaker Notebookを触ってみた</a>
+        </li><li>
+            <a href="../../05/18/gyoza.html">宇都宮で餃子をたくさん食べました</a>
+        </li><li>
+            <a href="../../05/16/aes.html">Ad Engineering Summit 2014</a>
+        </li><li>
+            <a href="../../05/13/izu_camping.html">西伊豆キャンプ</a>
+        </li><li>
+            <a href="../../05/05/dmm_english.html">DMM英会話</a>
+        </li><li>
+            <a href="../../05/05/kindle_mac.html">Amazon.co.jpアカウントのKindle本をMacで読む</a>
+        </li><li>
+            <a href="../../../2013/02/15/skywatch.html">天体観測イベント</a>
+        </li><li>
+            <a href="../../../2013/02/02/computer_science.html">情報科学若手の会・冬の陣に参加しました</a>
+        </li><li>
+            <a href="../../../2013/01/12/multi.html">UNIXコマンドを並列化する</a>
+        </li></ul>
+</div>
+</section><section><div class="widget">
+    <h1>カテゴリー</h1>
+    <ul><li><a href="../../../categories/adtech.html">adtech</a> (1)</li><li><a href="../../../categories/computer_science.html">computer science</a> (3)</li><li><a href="../../../categories/lifestyle.html">lifestyle</a> (6)</li><li><a href="../../../categories/others.html">others</a> (2)</li></ul>
+</div></section><section><div class="widget">
+    <h1>タグ</h1><a href="../../../tags/adtech.html">adtech</a> (1), <a href="../../../tags/business.html">business</a> (3), <a href="../../../tags/career.html">career</a> (3), <a href="../../../tags/command.html">command</a> (2), <a href="../../../tags/dmm.html">dmm</a> (1), <a href="../../../tags/english.html">english</a> (1), <a href="../../../tags/event.html">event</a> (6), <a href="../../../tags/food.html">food</a> (1), <a href="../../../tags/hadoop.html">hadoop</a> (1), <a href="../../../tags/kindle.html">kindle</a> (1), <a href="../../../tags/linux.html">linux</a> (2), <a href="../../../tags/mac.html">mac</a> (1), <a href="../../../tags/nature.html">nature</a> (2), <a href="../../../tags/programming.html">programming</a> (5), <a href="../../../tags/spark.html">spark</a> (1)</div></section><section><div class="widget">
+<h1>つぶやき</h1>
+<a class="twitter-timeline" href="https://twitter.com/ohtaman" data-widget-id="468056150659715074">@ohtaman からのツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div></section><section><div class="widget">
+  <h1>外部リンク</h1>
+  <ul>
+    <li>
+      <a href="http://www.blogmura.com/">ブログ村</a>
+    </li>
+  </ul>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2012, ohtaman. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>
