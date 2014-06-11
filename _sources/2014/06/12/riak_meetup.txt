@@ -1,0 +1,77 @@
+Riak Meetup Tokyo #4
+====================
+
+Riak Meetup Tokyo #4 に参加してきたので、メモです。
+
+ちなみに開催場所は六本木周辺、住所非公開の場所。
+住所非公開のためチェックインできませんでした。住所非公開て。。
+
+話を戻して、講演内容は
+
+1. Yahoo! JAPAN
+   - Riakを利用したパーソナライズ事例
+
+2. Talend*
+   - 2千万ダウンロードを誇る Talend Studio の紹介
+
+3. Bashジャパン
+   - Riakの整合性について
+
+で、 特に 1. について興味があったので参加しました。
+
+.. more::
+
+Yahoo! JAPAN (仁科さん)
+-----------------------
+
+.. raw:: html
+
+   <iframe src="http://www.slideshare.net/slideshow/embed_code/35551397" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/techblogyahoo/riak-35551397" title="Riakを利用したパーソナライズ事例" target="_blank">Riakを利用したパーソナライズ事例</a> </strong> from <strong><a href="http://www.slideshare.net/techblogyahoo" target="_blank">Yahoo!デベロッパーネットワーク</a></strong> </div>
+
+発表スライドを公開されているので、そちらのほうが早いですが...。
+
+スマフォ・タブレットの「あなたへのおすすめ」で利用するユーザーデータを Riak に保存しているとのことで、
+配信コンテンツ自体は別サーバに保存してあるそうです。
+面白かったのはその持ち方。
+
+* Bucket: ユーザーID
+* Key: スコアの計算ロジックの識別子
+* Object: ワードとスコアの組
+
+という構造に成っているため、ユーザー毎に複数のロジックを持てるようになっています。
+
+あとはチューニングの話。
+ちなみに、スライド内で言及されているXFSは、Riakのドキュメントにも推奨されているようで、相当効果があっ多様です。
+ディスクの I/O がそれだけで 60% くらい減ったとか。
+
+
+Talend*
+-------
+
+Talend と Riak で協業関係を結んだために招待されたとのこと。
+Talend Enterprise Big Data の事例としては
+
+* リスク計算の精緻化 - Citi
+* DWHのコスト削減 - Vodafone
+* EU共通運転免許運用基盤として - フランス内務省
+
+だそうです。
+
+Riakの整合性について (上西さん)
+---------------------------------------
+
+Erlang歴5年 分散システム歴6年 で最近は Riak CS の開発をしている上西さんの発表です。
+Ridakでの物理的整合性の取り方には、以下の2種類があります。
+
+* Siblings
+* CRDT (2.0~)
+* Strong Consistency (2.0~)
+
+だから Riak2.0 を楽しみにしてね、と。
+CRDT が使いやすいっぽい。
+
+
+.. author:: default
+.. categories:: computer science
+.. tags:: event,programming,riak
+.. comments::

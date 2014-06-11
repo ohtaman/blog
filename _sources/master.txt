@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/06/12/riak_meetup
    2014/06/02/hadoop
    2014/05/23/beaker
    2014/05/18/gyoza
