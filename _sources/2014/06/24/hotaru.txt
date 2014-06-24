@@ -61,6 +61,6 @@
 .. image:: 20140624.flower4.jpg
 
 .. author:: default
-.. categories:: life style
+.. categories:: lifestyle
 .. tags:: event,nature
 .. comments::
